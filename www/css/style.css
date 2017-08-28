@@ -51,6 +51,10 @@ button {
     color: #333;
 }
 
+.field {
+    position: relative;
+}
+
 label {
     line-height: 30px;
 }
@@ -63,6 +67,23 @@ input {
     background: #eee;
     padding: 7px;
     border-bottom: 2px solid #fee100;
+    position: relative;
+}
+
+.type-input, .services-input {
+    color: #333;
+    font-size: 20px;
+    width: 100%;
+    background: #eee;
+    padding: 7px;
+    border-bottom: 2px solid #fee100;
+    position: relative;
+}
+
+.type-input i, .services-input i {
+    position: absolute;
+    top: 7px;
+    right: 7px;
 }
 
 .message-wrapper {
@@ -98,5 +119,48 @@ input {
     background-color: #333;
     opacity: .5;
     z-index: 9999;
+}
+
+.type-wrapper, .services-wrapper {
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    width: 70%;
+    background: #fff;
+    border: 2px solid #fee100;
+    border-bottom: none;
+    z-index: 9999;
+}
+
+.services-wrapper {
+    border-bottom: 2px solid #fee100 !important;
+}
+
+.type-wrapper ul, .services-wrapper ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.type-wrapper ul li, .services-wrapper ul li {
+    color: #333;
+    line-height: 50px;
+    border-bottom: 1px solid #fee100;
+    text-align: center;
+    position: relative;
+}
+
+.services-wrapper ul li i {
+    display: none;
+}
+
+.services-wrapper ul li i.selected {
+    display: block;
+    float: left;
+    top: 15px;
+    position: absolute;
+    left: 10px;
+    font-size: 18px !important;
 }
 

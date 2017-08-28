@@ -23,6 +23,14 @@ var App = function() {
         $(".content").show();
     }
     
+    this.showMask = function() {
+        $('.mask').show();
+    }
+    
+    this.hideMask = function() {
+        $('.mask').hide();
+    }
+    
     this.message = {
         
         show: function(title, body) {

@@ -12,6 +12,7 @@
         <!-- Scripts -->
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="js/mask.js"></script>
         <script type="text/javascript" src="js/washForm.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
 
@@ -51,17 +52,28 @@
 
                 <div class="field">
                     <label>Телефон:</label><br>
-                    <input type="text" id="phone" />
+                    <input type="text" id="phone"/>
                 </div>
 
                 <div class="field">
-                    <label>Модель авто:</label><br>
-                    <input type="text" id="model" />
+                    <label>Тип:</label><br>
+                    <div class="type-input"><div id="type-value">Седан</div><i class="fa fa-arrow-circle-down"></i></div>
+                    <input type="hidden" id="model" value="2" />
                 </div>
 
                 <div class="field">
                     <label>Номер авто:</label><br>
                     <input type="text" id="number" />
+                </div>
+
+                <div class="field">
+                    <label>На время:</label><br>
+                    <input type="text" id="date_time" />
+                </div>
+
+                <div class="field">
+                    <label>Фото авто:</label><br>
+                    <input type="text" id="photo" />
                 </div>
 
                 <div class="field">
@@ -71,7 +83,8 @@
 
                 <div class="field">
                     <label>Вид услуг:</label><br>
-                    <input type="text" id="service" />
+                    <div class="services-input"><div id="services-value">Полировка кузова</div><i class="fa fa-arrow-circle-down"></i></div>
+                    <input type="hidden" id="services" value="1"/>
                 </div>
             </div>
             <div class="buttons-wrapper">
@@ -87,5 +100,29 @@
                 <button onclick="app.message.hide();">OK</button>
             </div>
         </div>
+
+        <div class="type-wrapper">
+            <ul>
+                <li value="0">Велосипед</li>
+                <li value="1">Мотоцикл</li>
+                <li value="2">Седан</li>
+                <li value="3">Джип</li>
+                <li value="4">Микроавтобус</li>
+                <li value="5">Малый грузовик</li>
+            </ul>
+        </div>
+
+        <div class="services-wrapper">
+            <ul>
+                <li value="0"><i class="fa fa-check selected"></i>Химическая чистка</li>
+                <li value="1"><i class="fa fa-check"></i>Полировка кузова</li>
+                <li value="2"><i class="fa fa-check"></i>Чернение шин</li>
+                <li value="3"><i class="fa fa-check"></i>Чистка салона</li>
+            </ul>
+            <div class="buttons-wrapper">
+                <button onclick="app.washForm.onSelectedTypes();">OK</button>
+            </div>
+        </div>
+
     </body>
 </html>
