@@ -10,4 +10,7 @@
     <content src="index.html" />
     <access origin="*" />
     <icon src="icon.png" />
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.CameraLauncher" />
+    </feature>
 </widget>

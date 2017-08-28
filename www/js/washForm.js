@@ -33,6 +33,10 @@ var WashForm = function() {
             app.showMask();
             $('.services-wrapper').show();
         });
+
+        $('.photo-input').click(function() {
+            scope.onPhoto();
+        });
     }
 
     this.open = function() {
@@ -64,6 +68,14 @@ var WashForm = function() {
         };
 
         return order;
+    }
+
+    this.onPhoto = function() {
+        navigator.camera.getPicture( function(picture) {
+            debugger;
+        }, function() {
+
+        });
     }
 
     this.init();

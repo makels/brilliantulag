@@ -4,6 +4,7 @@ body {
 
 i {
     font-size: 28px !important;
+    color: #999 !important;
 }
 
 .form {
@@ -70,17 +71,18 @@ input {
     position: relative;
 }
 
-.type-input, .services-input {
+.type-input, .services-input, .photo-input {
     color: #333;
     font-size: 20px;
     width: 100%;
     background: #eee;
     padding: 7px;
+    height: 24px;
     border-bottom: 2px solid #fee100;
     position: relative;
 }
 
-.type-input i, .services-input i {
+.type-input i, .services-input i, .photo-input i {
     position: absolute;
     top: 7px;
     right: 7px;
