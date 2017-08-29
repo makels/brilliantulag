@@ -10,7 +10,7 @@ var WashForm = function() {
             scope.send();
         });
 
-        $('#phone').mask('99-99-99');
+        //$('#phone').mask('99-99-99');
 
         $('.type-wrapper').find('li').click(function() {
             var val = $(this).attr('value');
@@ -45,9 +45,25 @@ var WashForm = function() {
     }
     
     this.send = function() {
+        var scope = this;
         var order = this.getOrder();
-        app.message.show('Заказ', 'Ваш заказ принят. Ожидайте приезда нашего сотрудника.');
-        
+        $.ajax({
+            url: app.apiUrl + "/new_order",
+            type: 'post',
+            dataType: 'json',
+            data: order,
+            success: function(response) {
+                if(response.res == 0) {
+                    app.message.show('Заказ', 'Ваш заказ принят. Ожидайте приезда нашего сотрудника.');
+                } else {
+                    app.message.show('Ошибка', 'Сервис временно не доступен. Попробуйте позже');
+                }
+            },
+            error: function() {
+                app.message.show('Ошибка', 'Сервис временно не доступен. Попробуйте позже');
+            }
+        });
+
     }
     
     this.onSelectedTypes = function() {
@@ -56,13 +72,17 @@ var WashForm = function() {
     }
 
     this.getOrder = function() {
+        var user_id = 0;
+        var user = app.user.getUserData();
+        if(user && user.id) user_id = user.id;
         var order = {
+            user_id: user_id,
             name: $('#name').val(),
             phone: $('#phone').val(),
             model: $('#model').val(),
             number: $('#number').val(),
             place: $('#place').val(),
-            service: $('#service').val(),
+            service: $('#services').val(),
             photo: $('#photo').val(),
             date_time: $('#date_time').val(),
         };

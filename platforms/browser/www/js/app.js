@@ -3,17 +3,32 @@
  */
 var App = function() {
 
+    this.apiUrl = 'http://bu.makels.com/api';
+    
+    this.registerForm = null;
+    
     this.washForm = null;
+    
+    this.user = null;
     
     this.init = function() {
 
+        this.user = new User();
+        
         this.washForm = new WashForm();
 
+        this.registerForm = new RegisterForm();
+        
         var scope = this;
         $('.main-background').height($(window).height());
         $('.mask').height($(window).height());
+
         $('#btn-wash').click(function() {
             scope.washForm.open();
+        });
+
+        $('#btn-register').click(function() {
+            scope.registerForm.open();
         });
         this.open();
     }

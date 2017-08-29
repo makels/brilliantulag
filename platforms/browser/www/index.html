@@ -13,6 +13,8 @@
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="js/mask.js"></script>
+        <script type="text/javascript" src="js/user.js"></script>
+        <script type="text/javascript" src="js/registerForm.js"></script>
         <script type="text/javascript" src="js/washForm.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
 
@@ -27,12 +29,13 @@
     <body>
         <div class="content form">
             <div class="main-background"></div>
+            <div class="app-name">Brilliant Ulag</div>
             <div class="main-wrapper">
                 <div class="buttons-wrapper">
                     <button id="btn-wash">Я хочу помыть машину</button>
                 </div>
                 <div class="buttons-wrapper">
-                    <button id="btn-work">Я хочу работать</button>
+                    <button id="btn-register">Вход / Регистрация</button>
                 </div>
             </div>
         </div>
@@ -79,7 +82,8 @@
 
                 <div class="field">
                     <label>Местоположение:</label><br>
-                    <input type="text" id="place" />
+                    <div class="map-input"><div id="map-value"></div><i class="fa fa-map-marker"></i></div>
+                    <input type="hidden" id="place" />
                 </div>
 
                 <div class="field">
@@ -90,6 +94,31 @@
             </div>
             <div class="buttons-wrapper">
                 <button id="btn-order">Заказать</button>
+            </div>
+        </div>
+
+        <div class="register-form form">
+            <div class="title-form">
+                <button onclick="app.open();"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                <button><i class="fa fa-cog" aria-hidden="true"></i></button>
+                <button style="float: right;"><i class="fa fa-language" aria-hidden="true"></i></button>
+            </div>
+            <div class="fieldset">
+                <div class="field">
+                    <label>E-mail:</label><br>
+                    <input type="text" id="email" autocomplete="off" />
+                </div>
+                <div class="field">
+                    <label>Пароль:</label><br>
+                    <input type="password" id="pass"  autocomplete="off" />
+                </div>
+                <div class="field" style="margin-top: 10px;">
+                    <input type="checkbox" id="is_worker" />
+                    &nbsp;&nbsp;<label style="position: absolute;">Хочу работать</label>
+                </div>
+                <div class="buttons-wrapper">
+                    <button id="btn-sign">Регистрация</button>
+                </div>
             </div>
         </div>
 
