@@ -24,17 +24,11 @@ var MapForm = function() {
     }
 
     this.onMapReady = function() {
-        var input = document.getElementById('map-input');
-        var searchBox = plugin.google.maps.places.SearchBox(input);
-        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(searchBox);
         this.setCurrentPosition();
     }
 
     this.setCurrentPosition = function() {
         var scope = this;
-        if(this.marker != null) {
-            this.marker.setMap(null);
-        }
 
         navigator.geolocation.getCurrentPosition(function(position) {
             var lat = position.coords.latitude;
