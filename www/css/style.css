@@ -202,3 +202,16 @@ input[type=checkbox] {
     margin-top: 20px;
 }
 
+#del-photo-btn {
+    color: red !important;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    display: none;
+}
+
+#map-wrapper {
+    margin-top: 15px;
+    border: 2px solid #fee100;
+}
+

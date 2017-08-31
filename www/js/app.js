@@ -9,6 +9,8 @@ var App = function() {
     
     this.washForm = null;
     
+    this.mapForm = null;
+    
     this.user = null;
     
     this.init = function() {
@@ -16,6 +18,8 @@ var App = function() {
         this.user = new User();
         
         this.washForm = new WashForm();
+        
+        this.mapForm = new MapForm();
 
         this.registerForm = new RegisterForm();
         

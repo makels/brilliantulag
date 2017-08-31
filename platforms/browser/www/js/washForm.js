@@ -3,7 +3,9 @@
  */
 var WashForm = function() {
 
-    this.photo = null;
+    this.photo = "";
+    
+    this.services = "";
 
     this.init = function() {
 
@@ -37,6 +39,18 @@ var WashForm = function() {
         $('.auto-photo-wrapper').click(function() {
             scope.onPhoto();
         });
+
+        $("#del-photo-btn").click(function() {
+            scope.photo = "";
+            $('.auto-photo-wrapper').css({
+                'background-image': 'url(../img/nophoto.png)'
+            });
+            $(this).hide();
+        });
+        
+        $('.map-input').click(function() {
+            app.mapForm.open();
+        });
     }
 
     this.open = function() {
@@ -67,7 +81,12 @@ var WashForm = function() {
     }
     
     this.onSelectedTypes = function() {
+        var scope = this;
         app.hideMask();
+        this.services = "";
+        $.each($('.services-wrapper .selected'), function(index, el) {
+            scope.services += $(el).attr("value") + ";";
+        });
         $('.services-wrapper').hide();
     }
 
@@ -83,7 +102,7 @@ var WashForm = function() {
             model: $('#model').val(),
             number: $('#number').val(),
             place: $('#place').val(),
-            service: $('#services').val(),
+            service: scope.services,
             date_time: $('#date_time').val(),
             photo: scope.photo
         };
@@ -99,6 +118,7 @@ var WashForm = function() {
             $('.auto-photo-wrapper').css({
                 'background-image': 'url(' + url + ')'
             });
+            $("#del-photo-btn").show();
         }, function() {
 
         },{ quality: 50,
