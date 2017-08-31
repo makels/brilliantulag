@@ -12,23 +12,16 @@ var MapForm = function() {
         var scope = this;
         $('#map-wrapper').height($(window).height() - 100);
         this.mapCanvas = document.getElementById("map-wrapper");
-        this.map = plugin.google.maps.Map.getMap(this.mapCanvas);
+        this.map = plugin.google.maps.Map.getMap(this.mapCanvas, {
+            
+        });
         this.map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
             scope.onMapReady();
         });
     }
 
     this.onMapReady = function() {
-        var scope = this;
-        this.map.getMyLocation(function(location) {
-            app.washForm.latlng = location.latLng;
-            scope.map.addMarker({
-                'position': location.latLng,
-                'title': msg
-            }, function(marker) {
-                marker.showInfoWindow();
-            });
-        });
+        this.setCurrentPosition();
     }
 
     this.setCurrentPosition = function() {
@@ -36,7 +29,20 @@ var MapForm = function() {
         navigator.geolocation.getCurrentPosition(function(position) {
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;
-            scope.map.LatLng(position.coords);
+            scope.map.animateCamera({
+                target: {lat: lat, lng: lng},
+                zoom: 17,
+                tilt: 60,
+                bearing: 140,
+                duration: 5000
+            }, function() {
+
+                // Add a maker
+                scope.map.addMarker({
+                    position: {lat: lat, lng: lng},
+                    animation: plugin.google.maps.Animation.BOUNCE
+                });
+            });
         });
     }
 
