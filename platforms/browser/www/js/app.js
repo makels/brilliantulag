@@ -21,7 +21,6 @@ var App = function() {
         
         var scope = this;
         $('.main-background').height($(window).height());
-        $('.mask').height($(window).height());
 
         $('#btn-wash').click(function() {
             scope.washForm.open();
@@ -39,24 +38,31 @@ var App = function() {
     }
     
     this.showMask = function() {
+        $('body').css({overflow: 'hidden'});
+        $('.mask').height($(document).height());
         $('.mask').show();
     }
     
     this.hideMask = function() {
+        $('body').css({overflow: 'scroll'})
         $('.mask').hide();
     }
     
     this.message = {
         
         show: function(title, body) {
+            var top = $(document).scrollTop();
             $('.message-wrapper .message-title').html(title);
             $('.message-wrapper .message-body').html(body);
-            $('.mask').show();
+            app.showMask();
+            $('.message-wrapper').css({
+                top: top + ($(window).height() / 2) - ($('.message-wrapper').height() / 2)
+            });
             $('.message-wrapper').show();
         },
 
         hide: function() {
-            $('.mask').hide();
+            app.hideMask();
             $('.message-wrapper').hide();
         }
         

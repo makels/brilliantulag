@@ -3,14 +3,14 @@
  */
 var WashForm = function() {
 
+    this.photo = null;
+
     this.init = function() {
 
         var scope = this;
         $('#btn-order').click(function() {
             scope.send();
         });
-
-        //$('#phone').mask('99-99-99');
 
         $('.type-wrapper').find('li').click(function() {
             var val = $(this).attr('value');
@@ -34,7 +34,7 @@ var WashForm = function() {
             $('.services-wrapper').show();
         });
 
-        $('.photo-input').click(function() {
+        $('.auto-photo-wrapper').click(function() {
             scope.onPhoto();
         });
     }
@@ -72,6 +72,7 @@ var WashForm = function() {
     }
 
     this.getOrder = function() {
+        var scope = this;
         var user_id = 0;
         var user = app.user.getUserData();
         if(user && user.id) user_id = user.id;
@@ -83,18 +84,25 @@ var WashForm = function() {
             number: $('#number').val(),
             place: $('#place').val(),
             service: $('#services').val(),
-            photo: $('#photo').val(),
             date_time: $('#date_time').val(),
+            photo: scope.photo
         };
 
         return order;
     }
 
     this.onPhoto = function() {
-        navigator.camera.getPicture( function(picture) {
-            debugger;
+        var scope = this;
+        navigator.camera.getPicture( function(pictureData) {
+            scope.photo = pictureData;
+            var url = "data:image/jpeg;base64," + pictureData;
+            $('.auto-photo-wrapper').css({
+                'background-image': 'url(' + url + ')'
+            });
         }, function() {
 
+        },{ quality: 50,
+            destinationType: Camera.DestinationType.DATA_URL
         });
     }
 
