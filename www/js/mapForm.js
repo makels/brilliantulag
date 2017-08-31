@@ -19,7 +19,12 @@ var MapForm = function() {
         $('#map-wrapper').height($(window).height() - 165);
         this.mapCanvas = document.getElementById("map-wrapper");
         this.map = plugin.google.maps.Map.getMap(this.mapCanvas);
-        this.geocoder = plugin.google.maps.Geocoder;
+        try {
+            this.geocoder = new plugin.google.maps.Geocoder();
+        } catch (e) {
+            app.message.show("Error", "Geocode is error");
+        }
+
         
         this.map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
             scope.onMapReady();
