@@ -14,6 +14,8 @@
 
     <plugin name="cordova-plugin-camera" spec="1.2.0" />
     <plugin name="cordova-plugin-whitelist" spec="1.3.2" />
+    <plugin name="cordova-plugin-geolocation" spec="1"/>
+
     <plugin name="cordova-plugin-googlemaps" spec="1.4.5">
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyDwmDR0f3MXKPcU2WMPhFujNyiDXSDLs-c" />
     </plugin>
