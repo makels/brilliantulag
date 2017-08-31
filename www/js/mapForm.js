@@ -19,7 +19,16 @@ var MapForm = function() {
     }
 
     this.onMapReady = function() {
-        
+        var scope = this;
+        this.map.getMyLocation(function(location) {
+            app.washForm.latlng = location.latLng;
+            scope.map.addMarker({
+                'position': location.latLng,
+                'title': msg
+            }, function(marker) {
+                marker.showInfoWindow();
+            });
+        });
     }
 
     this.open = function() {

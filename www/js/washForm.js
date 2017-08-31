@@ -6,6 +6,8 @@ var WashForm = function() {
     this.photo = "";
     
     this.services = "";
+    
+    this.latlng = "";
 
     this.init = function() {
 
@@ -101,7 +103,7 @@ var WashForm = function() {
             phone: $('#phone').val(),
             model: $('#model').val(),
             number: $('#number').val(),
-            place: $('#place').val(),
+            place: scope.latlng,
             service: scope.services,
             date_time: $('#date_time').val(),
             photo: scope.photo
