@@ -12,7 +12,7 @@ var MapForm = function() {
 
     this.init = function() {
         var scope = this;
-        $('#map-wrapper').height($(window).height() - 100);
+        $('#map-wrapper').height($(window).height() - 150);
         this.mapCanvas = document.getElementById("map-wrapper");
         this.map = plugin.google.maps.Map.getMap(this.mapCanvas, {
 
