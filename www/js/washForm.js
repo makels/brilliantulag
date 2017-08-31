@@ -42,16 +42,14 @@ var WashForm = function() {
             scope.onPhoto();
         });
 
-        $("#del-photo-btn").click(function(e) {
+        $('#del-photo-btn').click(function(e) {
+            scope.photo = "";
             e.stopPropagation();
             e.preventDefault();
-            scope.photo = "";
-            $('.auto-photo-wrapper').css({
-                'background-image': 'url(../img/nophoto.png)'
-            });
+            $('.auto-photo-wrapper').hide();
             $(this).hide();
         });
-        
+
         $('.map-input').click(function() {
             app.mapForm.open();
         });
@@ -119,12 +117,15 @@ var WashForm = function() {
         navigator.camera.getPicture( function(pictureData) {
             scope.photo = pictureData;
             var url = "data:image/jpeg;base64," + pictureData;
+            $('.auto-photo-wrapper').show();
             $('.auto-photo-wrapper').css({
                 'background-image': 'url(' + url + ')'
             });
             $("#del-photo-btn").show();
         }, function() {
-
+            scope.photo = "";
+            $("#del-photo-btn").hide();
+            $('.auto-photo-wrapper').hide();
         },{ quality: 50,
             destinationType: Camera.DestinationType.DATA_URL
         });

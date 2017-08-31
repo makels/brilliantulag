@@ -37,10 +37,9 @@ i {
     top: 10px;
     left: 15%;
     width: 70%;
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
-    color: #939393;
-    text-shadow: 1px 1px 1px #000;
+    color: #707070;
 }
 
 .main-background {
@@ -192,9 +191,9 @@ input[type=checkbox] {
 }
 
 .auto-photo-wrapper {
+    display: none;
     position: relative;
     height: 150px;
-    background-image: url(../img/nophoto.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;

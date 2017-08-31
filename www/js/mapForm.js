@@ -37,7 +37,10 @@ var MapForm = function() {
                 target: {lat: lat, lng: lng},
                 zoom: 17
             }, function() {
-
+               app.washForm.latlng = {
+                   lat: lat,
+                   lng: lng
+               };
                scope.marker = scope.map.addMarker({
                     position: {lat: lat, lng: lng},
                     animation: plugin.google.maps.Animation.BOUNCE
