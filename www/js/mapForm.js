@@ -31,6 +31,33 @@ var MapForm = function() {
         });
     }
 
+    this.setCurrentPosition = function() {
+        var scope = this;
+        var request = {
+            'position': ""
+        };
+        plugin.google.maps.Geocoder.geocode(request, function(results) {
+            if (results.length) {
+                var result = results[0];
+                var position = result.position;
+                var address = [
+                    result.subThoroughfare || "",
+                    result.thoroughfare || "",
+                    result.locality || "",
+                    result.adminArea || "",
+                    result.postalCode || "",
+                    result.country || ""].join(", ");
+
+                scope.map.addMarker({
+                    'position': position,
+                    'title':  address
+                });
+            } else {
+                app.message.show("Error", "Not found");
+            }
+        });
+    }
+
     this.open = function() {
         $('.form').hide();
         $('.map-form').show();
