@@ -6,6 +6,8 @@ var WashForm = function() {
     this.photo = "";
     
     this.services = "";
+    
+    this.latlng = "";
 
     this.init = function() {
 
@@ -40,7 +42,9 @@ var WashForm = function() {
             scope.onPhoto();
         });
 
-        $("#del-photo-btn").click(function() {
+        $("#del-photo-btn").click(function(e) {
+            e.stopPropagation();
+            e.preventDefault();
             scope.photo = "";
             $('.auto-photo-wrapper').css({
                 'background-image': 'url(../img/nophoto.png)'
@@ -101,7 +105,7 @@ var WashForm = function() {
             phone: $('#phone').val(),
             model: $('#model').val(),
             number: $('#number').val(),
-            place: $('#place').val(),
+            place: scope.latlng,
             service: scope.services,
             date_time: $('#date_time').val(),
             photo: scope.photo

@@ -42,7 +42,9 @@ var WashForm = function() {
             scope.onPhoto();
         });
 
-        $("#del-photo-btn").click(function() {
+        $("#del-photo-btn").click(function(e) {
+            e.stopPropagation();
+            e.preventDefault();
             scope.photo = "";
             $('.auto-photo-wrapper').css({
                 'background-image': 'url(../img/nophoto.png)'
