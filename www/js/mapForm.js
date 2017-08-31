@@ -5,24 +5,28 @@ var MapForm = function() {
 
     this.mapCanvas = null;
 
+    this.autocomplete = null;
+
     this.map = null;
+
+    this.geocoder = null;
 
     this.marker = null;
 
 
     this.init = function() {
         var scope = this;
-        $('#map-wrapper').height($(window).height() - 150);
+        $('#map-wrapper').height($(window).height() - 165);
         this.mapCanvas = document.getElementById("map-wrapper");
-        this.map = plugin.google.maps.Map.getMap(this.mapCanvas, {
-
-        });
+        this.map = plugin.google.maps.Map.getMap(this.mapCanvas);
+        this.geocoder = plugin.google.maps.Geocoder;
+        
         this.map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
             scope.onMapReady();
         });
         
     }
-
+    
     this.onMapReady = function() {
         this.setCurrentPosition();
     }
@@ -41,6 +45,7 @@ var MapForm = function() {
                    lat: lat,
                    lng: lng
                };
+               app.washForm.setAddress(app.washForm.latlng);
                scope.marker = scope.map.addMarker({
                     position: {lat: lat, lng: lng},
                     animation: plugin.google.maps.Animation.BOUNCE

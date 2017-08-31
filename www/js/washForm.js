@@ -9,6 +9,8 @@ var WashForm = function() {
     
     this.latlng = "";
 
+    this.address = "";
+
     this.init = function() {
 
         var scope = this;
@@ -80,6 +82,19 @@ var WashForm = function() {
             }
         });
 
+    }
+
+    this.setAddress = function(LatLng) {
+        var scope = this;
+        LatLng = new google.maps.LatLng(LatLng.lat, LatLng.lng);
+        app.mapForm.geocoder.geocode({ 'latLng': LatLng }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                if (results[1]) {
+                    scope.address = results[1].formatted_address;
+                    $('#map-value').html(scope.address);
+                }
+            }
+        });
     }
     
     this.onSelectedTypes = function() {
