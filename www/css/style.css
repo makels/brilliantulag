@@ -212,5 +212,10 @@ input[type=checkbox] {
 #map-wrapper {
     margin-top: 15px;
     border: 2px solid #fee100;
+    z-index: 99;
+}
+
+.pac-container {
+    z-index: 9999;
 }
 
