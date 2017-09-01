@@ -33,16 +33,11 @@ var App = function() {
         $('#btn-register').click(function() {
             scope.registerForm.open();
         });
-        
-        $(window).resize(function() {
-            $('.main-background').height($(window).height());
-        });
 
         this.open();
     }
 
     this.open = function() {
-        document.removeEventListener("backbutton");
         $(".form").hide();
         $(".content").show();
     }
