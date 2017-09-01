@@ -24,7 +24,8 @@ var MapForm = function() {
         });
 
         $('#map-autocomplete').change(function() {
-            plugin.google.maps.Geocoder.geocode({'address': $(this).val()}, function(results) {
+            plugin.google.maps.Geocoder.geocode({'address': $(this).val()}, function(results, status) {
+                app.log(status);
                 if (results.length) {
                     var result = results[0];
                     var position = result.position;
