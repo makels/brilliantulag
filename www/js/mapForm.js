@@ -24,15 +24,14 @@ var MapForm = function() {
         });
 
         try {
-            this.autocomplete =plugin.google.maps.places.Autocomplete(document.getElementById('map-autocomplete'), {types: ['geocode']});
+            this.autocomplete = new google.maps.places.Autocomplete(document.getElementById('map-autocomplete'), {types: ['geocode']});
+            this.autocomplete.addListener('place_changed', function() {
+                var place = scope.autocomplete.getPlace();
+                app.log("Success", JSON.stringify(place));
+            });
         } catch (e) {
             app.log("Error", "ZError places init");
         }
-
-        this.autocomplete.addListener('place_changed', function() {
-            var place = scope.autocomplete.getPlace();
-            
-        });
         
     }
     
