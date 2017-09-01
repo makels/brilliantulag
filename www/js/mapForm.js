@@ -22,6 +22,9 @@ var MapForm = function() {
         this.map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
             scope.onMapReady();
             scope.initAutocomplete();
+            $('body').on('touchstart','.pac-container', function(e){
+                e.stopImmediatePropagation();
+            })
         });
 
     }
@@ -54,9 +57,6 @@ var MapForm = function() {
     
     this.onMapReady = function() {
         this.setCurrentPosition();
-        $('body').on('touchstart','.pac-container', function(e){
-            e.stopImmediatePropagation();
-        })
     }
 
     this.setCurrentPosition = function() {
