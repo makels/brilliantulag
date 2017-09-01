@@ -73,18 +73,18 @@ var App = function() {
     }
     
     this.log = function(msg) {
-        if(localStorage.getItem('log') == null) localStorage.setItem('log', []);
-        var log = localStorage.getItem('log');
+        if(localStorage.getItem('log') == null) localStorage.setItem('log', JSON.stringify([]));
+        var log = JSON.parse(localStorage.getItem('log'));
         log.push(msg);
         localStorage.setItem('log', log);
     }
     
     this.clearLog = function() {
-        localStorage.setItem('log', []); 
+        localStorage.setItem('log', JSON.stringify([]));
     }
     
     this.showLog = function() {
-        var log = localStorage.getItem('log');
+        var log = JSON.parse(localStorage.getItem('log'));
         var log_text = "";
         $.each(log, function(index, el) {
             log_text += el + "<br>";

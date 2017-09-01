@@ -86,15 +86,24 @@ var WashForm = function() {
 
     this.setAddress = function(LatLng) {
         var scope = this;
-        LatLng = new google.maps.LatLng(LatLng.lat, LatLng.lng);
-        plugin.google.maps.Geocoder.geocode({ 'latLng': LatLng }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                if (results[1]) {
-                    scope.address = results[1].formatted_address;
-                    $('#map-value').html(scope.address);
+        try {
+            plugin.google.maps.Geocoder.geocode({ 'location': LatLng }, function (results, status) {
+                app.log("Lat: " + LatLng.lat);
+                app.log("Lng: " + LatLng.lng);
+                app.log("Status: " + status);
+                app.log("Result: " + JSON.stringify(results));
+                if (status === "OK") {
+                    if (results[1]) {
+                        scope.address = results[1].formatted_address;
+                        app.message.show('111', scope.address);
+                        $('#map-value').html(scope.address);
+                    }
                 }
-            }
-        });
+            });
+        } catch (e) {
+            app.message.show('Error', e.message);
+        }
+
     }
     
     this.onSelectedTypes = function() {
