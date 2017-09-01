@@ -58,11 +58,14 @@ var MapForm = function() {
     }
 
     this.clearMarkers = function() {
-        return;
-        for (var i = 0; i < this.markers.length; i++) {
-            this.markers[i].setMap(null);
+        try {
+            for (var i = 0; i < this.markers.length; i++) {
+                this.markers[i].setMap(null);
+            }
+            this.markers = [];
+        } catch (e) {
+            app.log(e.message);
         }
-        this.markers = [];
     }
 
     this.open = function() {
