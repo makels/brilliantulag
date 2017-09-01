@@ -23,7 +23,14 @@ var MapForm = function() {
             scope.onMapReady();
         });
 
-        $('#map-autocomplete').change(function() {
+        try {
+            this.autocomplete =plugin.google.maps.places.Autocomplete(document.getElementById('map-autocomplete'), {types: ['geocode']});
+        } catch (e) {
+            app.log("Error", "ZError places init");
+        }
+
+        this.autocomplete.addListener('place_changed', function() {
+            var place = scope.autocomplete.getPlace();
             
         });
         
