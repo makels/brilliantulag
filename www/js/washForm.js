@@ -88,11 +88,11 @@ var WashForm = function() {
         var scope = this;
         try {
             plugin.google.maps.Geocoder.geocode({ 'location': LatLng }, function (results, status) {
-                app.message.show('Result', JSON.stringify(results));
+                app.message.show('Result', status);
                 if (status === "OK") {
                     if (results[1]) {
                         scope.address = results[1].formatted_address;
-                        app.message.show(scope.address);
+                        app.message.show('111', scope.address);
                         $('#map-value').html(scope.address);
                     }
                 }
