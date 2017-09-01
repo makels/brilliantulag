@@ -95,7 +95,6 @@ var WashForm = function() {
                 if (results && results.length > 0) {
                     if (results[1]) {
                         scope.address = results[1].formatted_address;
-                        app.message.show('111', scope.address);
                         $('#map-value').html(scope.address);
                     }
                 }
