@@ -37,11 +37,10 @@
 
                     app.mapForm.map.animateCamera({
                         target: app.washForm.latlng,
-                        zoom: 17
                     }, function() {
 
                         var marker = scope.map.addMarker({
-                            position: {lat: lat, lng: lng},
+                            position: app.washForm.latlng,
                             animation: plugin.google.maps.Animation.BOUNCE
                         });
                         app.mapForm.markers.push(marker);
