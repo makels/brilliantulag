@@ -24,29 +24,7 @@ var MapForm = function() {
         });
 
         $('#map-autocomplete').change(function() {
-            plugin.google.maps.Geocoder.geocode({'address': $(this).val()}, function(results, status) {
-                app.log(status);
-                if (results.length) {
-                    var result = results[0];
-                    var position = result.position;
-
-                    this.map.addMarker({
-                        'position': position,
-                        'title':  JSON.stringify(result.position)
-                    }, function(marker) {
-
-                        this.map.animateCamera({
-                            'target': position,
-                            'zoom': 17
-                        }, function() {
-                            marker.showInfoWindow();
-                        });
-
-                    });
-                } else {
-                    app.log("fail");
-                }
-            });
+            
         });
         
     }

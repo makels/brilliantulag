@@ -92,7 +92,7 @@ var WashForm = function() {
                 app.log("Lat: " + LatLng.lat);
                 app.log("Lng: " + LatLng.lng);
                 app.log("Status: " + status);
-                app.log("Result: " + JSON.stringify(results));
+                app.log("Address: " + JSON.stringify(results[1].formatted_address));
                 if (status === "OK") {
                     if (results[1]) {
                         scope.address = results[1].formatted_address;
