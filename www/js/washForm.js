@@ -93,9 +93,10 @@ var WashForm = function() {
                 app.log("Lng: " + LatLng.lng);
                 app.log("Result: " + JSON.stringify(results));
                 if (results && results.length > 0) {
-                    if (results[1]) {
-                        scope.address = results[1].formatted_address;
+                    if (results[0].locality && results[0].thoroughfare) {
+                        scope.address = results[0].locality + " " + results[0].thoroughfare;
                         $('#map-value').html(scope.address);
+                        $('#map-autocomplete').val(scope.address);
                     }
                 }
             });
