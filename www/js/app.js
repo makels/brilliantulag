@@ -15,6 +15,10 @@ var App = function() {
     
     this.init = function() {
 
+        if(typeof(plugin.google.maps.Geocoder.geocode) != 'undefined') {
+            app.message.show('title', 'OK');
+        }
+
         this.user = new User();
         
         this.washForm = new WashForm();

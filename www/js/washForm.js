@@ -98,7 +98,7 @@ var WashForm = function() {
                 }
             });
         } catch (e) {
-            app.message.show('Eroor', e.message);
+            app.message.show('Error', e.message);
         }
 
     }
