@@ -44,15 +44,15 @@ var MapForm = function() {
                 zoom: 17
             }, function() {
                app.washForm.latlng = {
-                   lat: parseFloat(lat),
-                   lng: parseFloat(lng)
+                   lat: lat,
+                   lng: lng
                };
                app.washForm.setAddress(app.washForm.latlng);
                var marker = scope.map.addMarker({
-                    position: {lat: lat, lng: lng},
+                    position: app.washForm.latlng,
                     animation: plugin.google.maps.Animation.BOUNCE
                 });
-                this.markers.push(marker);
+                scope.markers.push(marker);
             });
         });
     }

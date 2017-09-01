@@ -225,5 +225,6 @@ input[type=checkbox] {
     line-height: 30px;
     overflow: hidden;
     width: 98%;
+    height: 30px;
 }
 
