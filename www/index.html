@@ -23,31 +23,36 @@
         <script type="text/javascript">
 
             function initAutocomplete() {
-                var autocomplete = new google.maps.places.Autocomplete(document.getElementById('map-autocomplete'), {types: ['geocode']});
-                autocomplete.addListener('place_changed', function() {
+                try {
+                    var autocomplete = new google.maps.places.Autocomplete(document.getElementById('map-autocomplete'), {types: ['geocode']});
+                    autocomplete.addListener('place_changed', function() {
 
-                    $('#map-wrapper').show();
-                    app.mapForm.clearMarkers();
-                    app.washForm.address = $('#map-autocomplete').val();
-                    $('#map-value').html(app.washForm.address);
-                    var place = autocomplete.getPlace();
-                    app.washForm.latlng = {
-                        lat: place.geometry.location.lat(),
-                        lng: place.geometry.location.lng()
-                    };
-                    app.mapForm.map.animateCamera({
-                        target: app.washForm.latlng,
-                        zoom: 17
-                    }, function() {
+                        $('#map-wrapper').show();
+                        app.mapForm.clearMarkers();
+                        app.washForm.address = $('#map-autocomplete').val();
+                        $('#map-value').html(app.washForm.address);
+                        var place = autocomplete.getPlace();
+                        app.washForm.latlng = {
+                            lat: place.geometry.location.lat(),
+                            lng: place.geometry.location.lng()
+                        };
+                        app.mapForm.map.animateCamera({
+                            target: app.washForm.latlng,
+                            zoom: 17
+                        }, function() {
 
-                        var marker = app.mapForm.map.addMarker({
-                            position: app.washForm.latlng,
-                            animation: plugin.google.maps.Animation.BOUNCE
+                            var marker = app.mapForm.map.addMarker({
+                                position: app.washForm.latlng,
+                                animation: plugin.google.maps.Animation.BOUNCE
+                            });
+                            app.mapForm.markers.push(marker);
                         });
-                        app.mapForm.markers.push(marker);
-                    });
 
-                });
+                    });
+                } catch (e) {
+                    app.log(e.message);
+                }
+
             }
 
             document.addEventListener("deviceready", onDeviceReady, false);

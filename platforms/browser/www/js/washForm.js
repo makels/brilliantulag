@@ -130,7 +130,7 @@ var WashForm = function() {
         app.hideMask();
         this.services = "";
         $.each($('.services-wrapper .selected'), function(index, el) {
-            scope.services += $(el).attr("value") + ";";
+            scope.services += $(el).parent().attr("value") + ";";
         });
         $('.services-wrapper').hide();
     }
