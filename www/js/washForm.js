@@ -87,7 +87,8 @@ var WashForm = function() {
     this.setAddress = function(LatLng) {
         var scope = this;
         LatLng = new google.maps.LatLng(LatLng.lat, LatLng.lng);
-        plugin.google.maps.Geocoder.geocode({ 'location': LatLng }, function (results, status) {
+
+        plugin.google.maps.Geocoder.geocode({ 'position': LatLng }, function (results, status) {
             app.message.show('Result', JSON.stringify(results));
             if (status == google.maps.GeocoderStatus.OK) {
                 if (results[1]) {
