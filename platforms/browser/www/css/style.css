@@ -210,7 +210,6 @@ input[type=checkbox] {
 }
 
 #map-wrapper {
-    display: none;
     margin-top: 15px;
     border: 2px solid #fee100;
     z-index: 99;

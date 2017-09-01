@@ -11,8 +11,7 @@ var MapForm = function() {
 
     this.geocoder = null;
 
-    this.marker = null;
-
+    this.markers = [];
 
     this.init = function() {
         var scope = this;
@@ -22,9 +21,11 @@ var MapForm = function() {
         this.map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
             scope.onMapReady();
         });
-        $('.pac-container').on('touchstart', function(e){
-            app.log("tap");
-            e.stopImmediatePropagation();
+        $('#map-autocomplete').focus(function() {
+            $('#map-wrapper').hide();
+        });
+        $('#map-autocomplete').blur(function() {
+            $('#map-wrapper').show();
         });
     }
  
@@ -34,7 +35,7 @@ var MapForm = function() {
 
     this.setCurrentPosition = function() {
         var scope = this;
-
+        this.clearMarkers();
         navigator.geolocation.getCurrentPosition(function(position) {
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;
@@ -47,12 +48,19 @@ var MapForm = function() {
                    lng: parseFloat(lng)
                };
                app.washForm.setAddress(app.washForm.latlng);
-               scope.marker = scope.map.addMarker({
+               var marker = scope.map.addMarker({
                     position: {lat: lat, lng: lng},
                     animation: plugin.google.maps.Animation.BOUNCE
                 });
+                this.markers.push(marker);
             });
         });
+    }
+
+    this.clearMarkers = function() {
+        for (var i = 0; i < this.markers.length; i++) {
+            this.markers[i].setMap(null);
+        }
     }
 
     this.open = function() {
