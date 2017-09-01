@@ -32,11 +32,13 @@ var WashForm = function() {
 
         $('.type-input').click(function() {
             app.showMask();
+            $(document).scrollTop(0);
             $('.type-wrapper').show();
         });
 
         $('.services-input').click(function() {
             app.showMask();
+            $(document).scrollTop(0);
             $('.services-wrapper').show();
         });
 
@@ -82,15 +84,18 @@ var WashForm = function() {
     this.send = function() {
         var scope = this;
         var order = this.getOrder();
+        app.showMask();
         $.ajax({
             url: app.apiUrl + "/new_order",
             type: 'post',
             dataType: 'json',
             data: order,
             success: function(response) {
+                app.hideMask();
                 if(response.res == 0) {
                     app.message.show('Заказ', 'Ваш заказ принят. Ожидайте приезда нашего сотрудника.');
                 } else {
+                    app.hideMask();
                     app.message.show('Ошибка', 'Сервис временно не доступен. Попробуйте позже');
                 }
             },
@@ -106,9 +111,6 @@ var WashForm = function() {
         try {
             var latLng = new plugin.google.maps.LatLng(LatLng.lat, LatLng.lng);
             plugin.google.maps.Geocoder.geocode({ 'position': latLng }, function (results) {
-                // app.log("Lat: " + LatLng.lat);
-                // app.log("Lng: " + LatLng.lng);
-                // app.log("Result: " + JSON.stringify(results));
                 if (results && results.length > 0) {
                     if (results[0].locality && results[0].thoroughfare) {
                         scope.address = results[0].locality + ", " + results[0].thoroughfare;
