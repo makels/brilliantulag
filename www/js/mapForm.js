@@ -30,11 +30,6 @@ var MapForm = function() {
         var scope = this;
         try {
         scope.autocomplete = new google.maps.places.Autocomplete(document.getElementById('map-autocomplete'), {types: ['geocode']});
-        $(document).on({
-            'DOMNodeInserted': function() {
-                $('.pac-item, .pac-item span', this).addClass('needsclick');
-            }
-        }, '.pac-container');
         scope.autocomplete.addListener('place_changed', function() {
             var place = scope.autocomplete.getPlace();
             app.washForm.latlng = {
@@ -59,6 +54,9 @@ var MapForm = function() {
     
     this.onMapReady = function() {
         this.setCurrentPosition();
+        $('body').on('touchstart','.pac-container', function(e){
+            e.stopImmediatePropagation();
+        })
     }
 
     this.setCurrentPosition = function() {

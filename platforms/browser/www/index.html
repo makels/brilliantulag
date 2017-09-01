@@ -24,11 +24,6 @@
         <script type="text/javascript">
             document.addEventListener("deviceready", onDeviceReady, false);
             function onDeviceReady() {
-                $(document).on({
-                    'DOMNodeInserted': function() {
-                        $('.pac-item, .pac-item span', this).addClass('needsclick');
-                    }
-                }, '.pac-container');
                 app.init();
             }
         </script>
