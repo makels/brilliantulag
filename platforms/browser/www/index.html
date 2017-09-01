@@ -57,7 +57,13 @@
 
             document.addEventListener("deviceready", onDeviceReady, false);
             function onDeviceReady() {
-                app.init();
+                try {
+                    app.init();
+                } catch (e) {
+                    app.log(e.message);
+                    app.consoleLog();
+                }
+
             }
         </script>
 

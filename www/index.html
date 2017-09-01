@@ -23,7 +23,6 @@
         <script type="text/javascript">
 
             function initAutocomplete() {
-                return;
                 try {
                     var autocomplete = new google.maps.places.Autocomplete(document.getElementById('map-autocomplete'), {types: ['geocode']});
                     autocomplete.addListener('place_changed', function() {
@@ -58,7 +57,13 @@
 
             document.addEventListener("deviceready", onDeviceReady, false);
             function onDeviceReady() {
-                app.init();
+                try {
+                    app.init();
+                } catch (e) {
+                    app.log(e.message);
+                    app.consoleLog();
+                }
+
             }
         </script>
 
@@ -208,6 +213,6 @@
             </div>
         </div>
 
-        <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwmDR0f3MXKPcU2WMPhFujNyiDXSDLs-c&libraries=places&callback=initAutocomplete" async defer></script>-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwmDR0f3MXKPcU2WMPhFujNyiDXSDLs-c&libraries=places&callback=initAutocomplete" async defer></script>
     </body>
 </html>
