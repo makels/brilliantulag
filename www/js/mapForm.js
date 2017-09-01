@@ -21,18 +21,30 @@ var MapForm = function() {
         this.map = plugin.google.maps.Map.getMap(this.mapCanvas);
         this.map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
             scope.onMapReady();
+            try {
+                scope.autocomplete = new google.maps.places.Autocomplete(document.getElementById('map-autocomplete'), {types: ['geocode']});
+                scope.autocomplete.addListener('place_changed', function() {
+                    var place = scope.autocomplete.getPlace();
+                    app.washForm.latlng = {
+                        lat: place.geometry.location.lat(),
+                        lng: place.geometry.location.lat()
+                    };
+                    scope.map.animateCamera({
+                        target: app.washForm.latlng,
+                        zoom: 17
+                    }, function() {
+                        app.washForm.setAddress(app.washForm.latlng);
+                        scope.marker = scope.map.addMarker({
+                            position: {lat: lat, lng: lng},
+                            animation: plugin.google.maps.Animation.BOUNCE
+                        });
+                    });
+                });
+            } catch (e) {
+                app.log(e.message);
+            }
         });
 
-        try {
-            this.autocomplete = new google.maps.places.Autocomplete(document.getElementById('map-autocomplete'), {types: ['geocode']});
-            this.autocomplete.addListener('place_changed', function() {
-                var place = scope.autocomplete.getPlace();
-                app.log("Success", JSON.stringify(place));
-            });
-        } catch (e) {
-            app.log("Error", "ZError places init");
-        }
-        
     }
     
     this.onMapReady = function() {
