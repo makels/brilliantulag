@@ -25,6 +25,7 @@
             function initAutocomplete() {
                 var autocomplete = new google.maps.places.Autocomplete(document.getElementById('map-autocomplete'), {types: ['geocode']});
                 autocomplete.addListener('place_changed', function() {
+
                     $('#map-wrapper').show();
                     app.mapForm.clearMarkers();
                     app.washForm.address = $('#map-autocomplete').val();
@@ -34,6 +35,7 @@
                         lat: place.geometry.location.lat(),
                         lng: place.geometry.location.lat()
                     };
+                    app.log(JSON.stringify(app.washForm.latlng));
 
                     app.mapForm.map.animateCamera({
                         target: app.washForm.latlng,

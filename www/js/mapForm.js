@@ -58,9 +58,11 @@ var MapForm = function() {
     }
 
     this.clearMarkers = function() {
+        return;
         for (var i = 0; i < this.markers.length; i++) {
             this.markers[i].setMap(null);
         }
+        this.markers = [];
     }
 
     this.open = function() {
