@@ -86,13 +86,13 @@ var WashForm = function() {
 
     this.setAddress = function(LatLng) {
         var scope = this;
-        LatLng = new google.maps.LatLng(LatLng.lat, LatLng.lng);
         try {
-            plugin.google.maps.Geocoder.geocode({ 'position': LatLng }, function (results, status) {
+            plugin.google.maps.Geocoder.geocode({ 'location': LatLng }, function (results, status) {
                 app.message.show('Result', JSON.stringify(results));
-                if (status == google.maps.GeocoderStatus.OK) {
+                if (status === "OK") {
                     if (results[1]) {
                         scope.address = results[1].formatted_address;
+                        app.message.show(scope.address);
                         $('#map-value').html(scope.address);
                     }
                 }
