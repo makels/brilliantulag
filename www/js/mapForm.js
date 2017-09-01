@@ -40,8 +40,8 @@ var MapForm = function() {
                 zoom: 17
             }, function() {
                app.washForm.latlng = {
-                   lat: lat,
-                   lng: lng
+                   lat: parseFloat(lat),
+                   lng: parseFloat(lng)
                };
                app.washForm.setAddress(app.washForm.latlng);
                scope.marker = scope.map.addMarker({

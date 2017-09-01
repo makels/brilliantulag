@@ -76,7 +76,7 @@ var App = function() {
         if(localStorage.getItem('log') == null) localStorage.setItem('log', JSON.stringify([]));
         var log = JSON.parse(localStorage.getItem('log'));
         log.push(msg);
-        localStorage.setItem('log', log);
+        localStorage.setItem('log', JSON.stringify(log));
     }
     
     this.clearLog = function() {
