@@ -37,9 +37,10 @@
 
                     app.mapForm.map.animateCamera({
                         target: app.washForm.latlng,
+                        zoom: 13
                     }, function() {
 
-                        var marker = scope.map.addMarker({
+                        var marker = app.mapForm.map.addMarker({
                             position: app.washForm.latlng,
                             animation: plugin.google.maps.Animation.BOUNCE
                         });
@@ -116,7 +117,7 @@
 
                 <div class="field">
                     <label>Местоположение:</label><br>
-                    <div class="map-input"><div id="map-value">&nbsp;</div><i class="fa fa-map-marker"></i></div>
+                    <div class="map-input"><div id="map-value">sdgfgfdgdfh fsdhdfhghgf dghdgfhdgfhg dghdgfhgfhgfh dghgfh dghdghgfhjgfhgh dfhdghgdfhgf</div><i class="fa fa-map-marker"></i></div>
                     <input type="hidden" id="place" />
                 </div>
 
