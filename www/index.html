@@ -35,8 +35,6 @@
                         lat: place.geometry.location.lat(),
                         lng: place.geometry.location.lng()
                     };
-                    app.log(JSON.stringify(app.washForm.latlng));
-
                     app.mapForm.map.animateCamera({
                         target: app.washForm.latlng,
                         zoom: 17

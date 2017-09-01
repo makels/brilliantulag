@@ -16,6 +16,9 @@ var MapForm = function() {
     this.init = function() {
         var scope = this;
         $('#map-wrapper').height($(window).height() - 165);
+        $(window).resize(function() {
+            scope.onResize();
+        });
         this.mapCanvas = document.getElementById("map-wrapper");
         this.map = plugin.google.maps.Map.getMap(this.mapCanvas);
         this.map.addEventListener(plugin.google.maps.event.MAP_READY, function() {
@@ -27,6 +30,10 @@ var MapForm = function() {
         $('#map-autocomplete').blur(function() {
             $('#map-wrapper').show();
         });
+    }
+    
+    this.onResize = function() {
+        $('#map-wrapper').height($(window).height() - 165);
     }
  
     this.onMapReady = function() {
@@ -58,17 +65,15 @@ var MapForm = function() {
     }
 
     this.clearMarkers = function() {
-        try {
-            for (var i = 0; i < this.markers.length; i++) {
-                this.markers[i].setMap(null);
-            }
-            this.markers = [];
-        } catch (e) {
-            app.log(e.message);
-        }
+        this.map.clear();
+        this.markers = [];
     }
 
     this.open = function() {
+        document.removeEventListener("backbutton");
+        document.addEventListener("backbutton", function() {
+            app.washForm.open();
+        }, false);
         $('.form').hide();
         $('.map-form').show();
     }

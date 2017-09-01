@@ -71,6 +71,10 @@ var WashForm = function() {
     }
 
     this.open = function() {
+        document.removeEventListener("backbutton");
+        document.addEventListener("backbutton", function() {
+            app.open();
+        }, false);
         $(".form").hide();
         $(".wash-form").show();
     }

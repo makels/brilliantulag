@@ -15,6 +15,10 @@ var RegisterForm = function() {
     }
 
     this.open = function() {
+        document.removeEventListener("backbutton");
+        document.addEventListener("backbutton", function() {
+            app.open();
+        }, false);
         $(".form").hide();
         $(".register-form").show();
     }
