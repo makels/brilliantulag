@@ -87,16 +87,20 @@ var WashForm = function() {
     this.setAddress = function(LatLng) {
         var scope = this;
         LatLng = new google.maps.LatLng(LatLng.lat, LatLng.lng);
-
-        plugin.google.maps.Geocoder.geocode({ 'position': LatLng }, function (results, status) {
-            app.message.show('Result', JSON.stringify(results));
-            if (status == google.maps.GeocoderStatus.OK) {
-                if (results[1]) {
-                    scope.address = results[1].formatted_address;
-                    $('#map-value').html(scope.address);
+        try {
+            plugin.google.maps.Geocoder.geocode({ 'position': LatLng }, function (results, status) {
+                app.message.show('Result', JSON.stringify(results));
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[1]) {
+                        scope.address = results[1].formatted_address;
+                        $('#map-value').html(scope.address);
+                    }
                 }
-            }
-        });
+            });
+        } catch (e) {
+            app.message.show('Eroor', e.message);
+        }
+
     }
     
     this.onSelectedTypes = function() {
