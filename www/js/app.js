@@ -15,6 +15,8 @@ var App = function() {
     
     this.init = function() {
 
+        this.open();
+
         this.user = new User();
         
         this.washForm = new WashForm();
@@ -38,7 +40,7 @@ var App = function() {
             $('.main-background').height($(window).height());
         });
         
-        this.open();
+
     }
 
     this.open = function() {
