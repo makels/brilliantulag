@@ -55,6 +55,19 @@ var WashForm = function() {
         $('.map-input').click(function() {
             app.mapForm.open();
         });
+
+
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            scope.latlng = {
+                lat: lat,
+                lng: lng
+            };
+            scope.setAddress(scope.latlng);
+        });
+
+
     }
 
     this.open = function() {
@@ -89,12 +102,12 @@ var WashForm = function() {
         try {
             var latLng = new plugin.google.maps.LatLng(LatLng.lat, LatLng.lng);
             plugin.google.maps.Geocoder.geocode({ 'position': latLng }, function (results) {
-                app.log("Lat: " + LatLng.lat);
-                app.log("Lng: " + LatLng.lng);
-                app.log("Result: " + JSON.stringify(results));
+                // app.log("Lat: " + LatLng.lat);
+                // app.log("Lng: " + LatLng.lng);
+                // app.log("Result: " + JSON.stringify(results));
                 if (results && results.length > 0) {
                     if (results[0].locality && results[0].thoroughfare) {
-                        scope.address = results[0].locality + " " + results[0].thoroughfare;
+                        scope.address = results[0].locality + ", " + results[0].thoroughfare;
                         $('#map-value').html(scope.address);
                         $('#map-autocomplete').val(scope.address);
                     }
@@ -128,6 +141,7 @@ var WashForm = function() {
             model: $('#model').val(),
             number: $('#number').val(),
             place: scope.latlng,
+            address: scope.address,
             service: scope.services,
             date_time: $('#date_time').val(),
             photo: scope.photo
