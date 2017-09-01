@@ -88,7 +88,8 @@ var WashForm = function() {
         var scope = this;
         try {
             var latLng = new plugin.google.maps.LatLng(LatLng.lat, LatLng.lng);
-            plugin.google.maps.Geocoder.geocode({ 'address': 'casablanka' }, function (results, status) {
+            var geocoder = new plugin.google.maps.Geocoder();
+            geocoder.geocode({ 'location': latLng }, function (results, status) {
                 app.log("Lat: " + LatLng.lat);
                 app.log("Lng: " + LatLng.lng);
                 app.log("Status: " + status);
