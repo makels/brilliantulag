@@ -117,7 +117,7 @@ input[type=checkbox] {
     background-color: #fff;
     display: none;
     width: 70%;
-    z-index: 10000;
+    z-index: 100000;
     position: absolute;
     top: 20%;
     left: 15%;

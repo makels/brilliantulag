@@ -89,7 +89,7 @@ var App = function() {
         $.each(log, function(index, el) {
             log_text += el + "<br>";
         });
-        this.message.show("log", '<span style="font-size: 8px;">' + log_text + '</span>');
+        this.message.show("log", '<span style="font-size: 8px;line-height: 10px;">' + log_text + '</span>');
     }
 
 }
