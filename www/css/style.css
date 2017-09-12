@@ -4,7 +4,7 @@ body {
 
 i {
     font-size: 28px !important;
-    color: #999 !important;
+    color: #fff !important;
 }
 
 .form {
@@ -18,10 +18,9 @@ i {
 
 .main-wrapper {
     position: absolute;
-    width: 65%;
-    left: 17%;
+    width: 100%;
     z-index: 99;
-    top: 13%;
+    top: 350px;
     background-color: #fff;
     box-shadow: 0px 0px 35px 15px #eee;
 }
@@ -44,10 +43,9 @@ i {
 
 .main-background {
     width: 100%;
-    background-image: url(../img/main.jpg);
-    background-size: contain;
+    background-image: url(../img/logo_full_new.png);
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center 60px;
     z-index: 1;
 }
 
@@ -57,10 +55,10 @@ i {
 }
 
 button {
-    background-color: #fff;
-    border: 2px solid #fee100;
+    background-color: #0c9cee;
+    border: 2px solid #0c9cee;
     padding: 10px;
-    color: #333;
+    color: #fff;
     text-transform: uppercase;
 }
 
@@ -86,7 +84,7 @@ input {
     border: none;
     background: #eee;
     padding: 7px;
-    border-bottom: 2px solid #fee100;
+    border-bottom: 2px solid #0c9cee;
     position: relative;
 }
 
@@ -102,7 +100,7 @@ input[type=checkbox] {
     background: #eee;
     padding: 7px;
     height: 24px;
-    border-bottom: 2px solid #fee100;
+    border-bottom: 2px solid #0c9cee;
     position: relative;
 }
 
@@ -113,7 +111,7 @@ input[type=checkbox] {
 }
 
 .message-wrapper {
-    border: 2px solid #fee100;
+    border: 2px solid #0c9cee;
     background-color: #fff;
     display: none;
     width: 70%;
@@ -126,14 +124,25 @@ input[type=checkbox] {
 .message-wrapper .message-title {
     padding-left: 10px;
     height: 40px;
-    color: #333;
+    color: #fff;
     line-height: 40px;
-    background-color: #fee100;
+    background-color: #0c9cee;
+
 }
 
 .message-body {
     padding: 10px;
     text-align: center;
+}
+
+.main-slogan {
+    z-index: 999;
+    position: absolute;
+    top: 270px;
+    text-align: center;
+    color: #0c9cee;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .mask {
@@ -154,13 +163,13 @@ input[type=checkbox] {
     left: 15%;
     width: 70%;
     background: #fff;
-    border: 2px solid #fee100;
+    border: 2px solid #0c9cee;
     border-bottom: none;
     z-index: 9999;
 }
 
 .services-wrapper {
-    border-bottom: 2px solid #fee100 !important;
+    border-bottom: 2px solid #0c9cee !important;
 }
 
 .type-wrapper ul, .services-wrapper ul {
@@ -172,7 +181,7 @@ input[type=checkbox] {
 .type-wrapper ul li, .services-wrapper ul li {
     color: #333;
     line-height: 50px;
-    border-bottom: 1px solid #fee100;
+    border-bottom: 1px solid #0c9cee;
     text-align: center;
     position: relative;
 }
@@ -197,7 +206,7 @@ input[type=checkbox] {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    border: 2px solid #fee100;
+    border: 2px solid #0c9cee;
     margin-top: 20px;
 }
 
@@ -212,7 +221,7 @@ input[type=checkbox] {
 #map-wrapper {
 
     margin-top: 15px;
-    border: 2px solid #fee100;
+    border: 2px solid #0c9cee;
     z-index: 99;
 }
 
@@ -230,5 +239,47 @@ input[type=checkbox] {
 
 #map-autocomplete {
     font-size: 12px;
+}
+
+#btn-wash {
+    background-color: #0c9cee;
+    color: #fff;
+    width: 100%;
+}
+
+#btn-register {
+    width: 100%;
+    color: #333;
+    background-color: #fff;
+}
+
+.language-wrapper {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #0c9cee;
+    border-left: none;
+    position: absolute;
+    top: 0;
+}
+
+.language-wrapper ul {
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.language-wrapper li {
+    border-left: 1px solid #0c9cee;
+    float: left;
+    width: 33%;
+    line-height: 40px;
+    color: #333;
+    text-align: center;
+}
+
+.language-wrapper li.selected {
+    background-color: #0c9cee;
+    color: #fff;
 }
 
