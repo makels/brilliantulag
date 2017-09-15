@@ -3,7 +3,7 @@
  */
 var App = function() {
 
-    this.apiUrl = 'http://bu.makels.com/api';
+    this.apiUrl = 'http://bulag.tk/admin/api';
     
     this.registerForm = null;
     
