@@ -3,6 +3,11 @@
  */
 var RegisterWasherForm = function() {
 
+    this.latlng = {
+        lat: 0,
+        lng: 0
+    };
+
     this.init = function() {
         var scope = this;
     }
@@ -27,9 +32,9 @@ var RegisterWasherForm = function() {
                     app.message.show(app.lang.get('Регистрация'), app.lang.get('Такой пользователь уже существует'));
                     return;
                 }
-                response.user.type = 1;
-                response.user.pass = data.pass;
-                app.user.setUserData(response.user);
+                response.washer.type = 1;
+                response.washer.pass = data.pass;
+                app.washer.setWasherData(response.washer);
                 app.message.show(app.lang.get('Регистрация'), app.lang.get('Вы успешно зарегистрировались'));
                 app.open();
             },
@@ -46,9 +51,10 @@ var RegisterWasherForm = function() {
             email: $('#regw_email').val(),
             pass: $('#regw_pass').val(),
             address: $('#regw_address').val(),
-            transport: $('#regw_transport').hasClass("selected")
+            transport: $('#regw_transport').hasClass("selected"),
+            place: this.latlng.lat + ";" + this.latlng.lng
         }
-        if(data.name == "" || data.phone == "" || data.email == "" || data.pass == "" || data.address) {
+        if(data.name == "" || data.phone == "" || data.email == "" || data.pass == "" || data.address == "") {
             app.message.show(app.lang.get("Ошибка"), app.lang.get("Заполните все поля"));
             return false;
         }

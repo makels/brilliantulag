@@ -26,7 +26,10 @@ var App = function() {
         this.lang = new Lang();
 
         this.lang.init(function() {
+            
             scope.user = new User();
+
+            scope.washer = new Washer();
 
             scope.washForm = new WashForm();
 
@@ -73,11 +76,21 @@ var App = function() {
     }
 
     this.initAutocomplete = function() {
-        var autocomplete = new google.maps.places.Autocomplete(document.getElementById('map-autocomplete'), {types: ['geocode']});
-        autocomplete.addListener('place_changed', function() {
+        var scope = this;
+        this.orderPlace = new google.maps.places.Autocomplete(document.getElementById('map-autocomplete'), {types: ['geocode']});
+        this.washerPlace = new google.maps.places.Autocomplete(document.getElementById('regw_address'), {types: ['geocode']});
+        this.orderPlace.addListener('place_changed', function() {
             app.washForm.address = $('#map-autocomplete').val();
-            var place = autocomplete.getPlace();
+            var place = scope.orderPlace.getPlace();
             app.washForm.latlng = {
+                lat: place.geometry.location.lat(),
+                lng: place.geometry.location.lng()
+            };
+        });
+        this.washerPlace.addListener('place_changed', function() {
+            app.washForm.address = $('#map-autocomplete').val();
+            var place = scope.washerPlace.getPlace();
+            app.registerWasherForm.latlng = {
                 lat: place.geometry.location.lat(),
                 lng: place.geometry.location.lng()
             };
