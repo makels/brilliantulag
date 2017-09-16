@@ -8,6 +8,8 @@ var App = function() {
     this.apiGoogle = 'AIzaSyDwmDR0f3MXKPcU2WMPhFujNyiDXSDLs-c';
     
     this.lang = null;
+    
+    this.menu_opening = false;
 
     this.registerForm = null;
     
@@ -29,6 +31,12 @@ var App = function() {
             scope.washForm = new WashForm();
 
             scope.registerForm = new RegisterForm();
+            
+            scope.registerWasherForm = new RegisterWasherForm();
+
+            $('.checkbox').click(function() {
+                $(this).toggleClass('checked');
+            });
 
             $('.language-wrapper').find('li').
                 removeClass('selected').
@@ -42,12 +50,14 @@ var App = function() {
 
             $('.main-background').height($(window).height());
 
+            //$('.menu-wrapper').height($(window).height());
+            
             $('#btn-wash').click(function() {
                 scope.washForm.open();
             });
 
             $('#btn-register').click(function() {
-                scope.registerForm.open();
+                scope.registerWasherForm.open();
             });
 
             $('.mask').click(function() {
@@ -74,11 +84,28 @@ var App = function() {
         });
     }
 
+    this.openMenu = function() {
+        $( ".menu-wrapper" ).animate({
+            height: "+=290px",
+            opacity: "+=1"
+        }, 200);
+        this.menu_opening = true;
+    }
+
+    this.closeMenu = function() {
+        $( ".menu-wrapper" ).animate({
+            height: "-=290px",
+            opacity: "-=1"
+        }, 200);
+        this.menu_opening = false;
+    }
+
     this.googlePlacesLoad = function() {
         $.getScript("https://maps.googleapis.com/maps/api/js?key=" + app.apiGoogle + "&libraries=places&callback=app.initAutocomplete");
     }
 
     this.open = function() {
+        app.closeMenu();
         $(".form").hide();
         $(".content").show();
     }

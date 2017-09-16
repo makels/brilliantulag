@@ -19,6 +19,7 @@
         <script type="text/javascript" src="js/tu.js"></script>
         <script type="text/javascript" src="js/lang.js"></script>
         <script type="text/javascript" src="js/registerForm.js"></script>
+        <script type="text/javascript" src="js/registerWasherForm.js"></script>
         <script type="text/javascript" src="js/washForm.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
 
@@ -36,6 +37,7 @@
     </head>
     <body>
         <div class="content form">
+            <button onclick="if(app.menu_opening) app.closeMenu(); else app.openMenu();"><i class="fa fa-bars" aria-hidden="true"></i></button>
             <div class="language-wrapper">
                 <ul>
                     <li id="tu">Turkmen</li>
@@ -58,9 +60,9 @@
         <!-- Wash Form -->
         <div class="wash-form form">
             <div class="title-form">
+                <button onclick="if(app.menu_opening) app.closeMenu(); else app.openMenu();"><i class="fa fa-bars" aria-hidden="true"></i></button>
                 <button id="btn-back" onclick="app.open();"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
                 <button id="btn-setting" onclick="app.washForm.onPhoto();"><i class="fa fa-camera" aria-hidden="true"></i></button>
-                <button id="btn-lang" style="float: right;"><i class="fa fa-language" aria-hidden="true"></i></button>
             </div>
 
             <div class="auto-photo-wrapper">
@@ -110,27 +112,68 @@
             </div>
         </div>
 
+        <!-- Registration Form -->
         <div class="register-form form">
             <div class="title-form">
+                <button onclick="if(app.menu_opening) app.closeMenu(); else app.openMenu();"><i class="fa fa-bars" aria-hidden="true"></i></button>
                 <button onclick="app.open();"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
-                <button><i class="fa fa-cog" aria-hidden="true"></i></button>
-                <button style="float: right;"><i class="fa fa-language" aria-hidden="true"></i></button>
             </div>
             <div class="fieldset">
                 <div class="field">
+                    <label>@@Имя:</label><br>
+                    <input type="text" id="reg_name" autocomplete="off" />
+                </div>
+                <div class="field">
+                    <label>@@Телефон:</label><br>
+                    <input type="text" id="reg_phone" autocomplete="off" />
+                </div>
+                <div class="field">
                     <label>E-mail:</label><br>
-                    <input type="text" id="email" autocomplete="off" />
+                    <input type="text" id="reg_email" autocomplete="off" />
                 </div>
                 <div class="field">
                     <label>@@Пароль:</label><br>
-                    <input type="password" id="pass"  autocomplete="off" />
-                </div>
-                <div class="field" style="margin-top: 10px;">
-                    <input type="checkbox" id="is_worker" />
-                    &nbsp;&nbsp;<label style="position: absolute;">@@Хочу работать</label>
+                    <input type="password" id="reg_pass"  autocomplete="off" />
                 </div>
                 <div class="buttons-wrapper">
-                    <button id="btn-sign">@@Регистрация</button>
+                    <button onclick="app.registerForm.registration();">@@Регистрация</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration Washer Form -->
+        <div class="register-washer-form form">
+            <div class="title-form">
+                <button onclick="if(app.menu_opening) app.closeMenu(); else app.openMenu();"><i class="fa fa-bars" aria-hidden="true"></i></button>
+                <button onclick="app.open();"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+            </div>
+            <div class="fieldset">
+                <div class="field">
+                    <label>@@Имя:</label><br>
+                    <input type="text" id="regw_name" autocomplete="off" />
+                </div>
+                <div class="field">
+                    <label>@@Телефон:</label><br>
+                    <input type="text" id="regw_phone" autocomplete="off" />
+                </div>
+                <div class="field">
+                    <label>E-mail:</label><br>
+                    <input type="text" id="regw_email" autocomplete="off" />
+                </div>
+                <div class="field">
+                    <label>@@Пароль:</label><br>
+                    <input type="password" id="regw_pass"  autocomplete="off" />
+                </div>
+                <div class="field">
+                    <label>@@Район работ:</label><br>
+                    <input type="password" id="regw_address"  autocomplete="off" />
+                </div>
+                <div class="checkbox-field">
+                    <label>@@Есть личный транспорт:<br><span>@@(могу доехать до клиента бесплатно)</span></label>
+                    <div class="checkbox checked" id="regw_transport"></div>
+                </div>
+                <div class="buttons-wrapper">
+                    <button onclick="app.registerForm.registration();">@@Регистрация</button>
                 </div>
             </div>
         </div>
@@ -173,6 +216,16 @@
             <div class="buttons-wrapper">
                 <button onclick="app.washForm.onSelectedTypes();">OK</button>
             </div>
+        </div>
+
+        <div class="menu-wrapper">
+            <ul>
+                <li><i class="fa fa-lock"></i>&nbsp;@@Вход</li>
+                <li onclick="app.registerForm.open();"><i class="fa fa-user-plus"></i>&nbsp;@@Регистрация</li>
+                <li><i class="fa fa-cog"></i>&nbsp;@@Настройки</li>
+                <li><i class="fa fa-automobile"></i>&nbsp;@@Выполненый заказ</li>
+                <li><i class="fa fa-info"></i>&nbsp;@@Информация</li>
+            </ul>
         </div>
 
     </body>

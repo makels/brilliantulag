@@ -1,7 +1,7 @@
 /**
- * Created by ZERG on 29.08.2017.
+ * Created by ZERG on 16.09.2017.
  */
-var RegisterForm = function() {
+var RegisterWasherForm = function() {
 
     this.init = function() {
         var scope = this;
@@ -10,7 +10,7 @@ var RegisterForm = function() {
     this.open = function() {
         app.closeMenu();
         $(".form").hide();
-        $(".register-form").show();
+        $(".register-washer-form").show();
     }
 
     this.registration = function() {
@@ -18,7 +18,7 @@ var RegisterForm = function() {
         var data = this.getFormData();
         if(data === false) return;
         $.ajax({
-            url: app.apiUrl + '/register',
+            url: app.apiUrl + '/register_washer',
             type: 'post',
             dataType: 'json',
             data: data,
@@ -36,10 +36,10 @@ var RegisterForm = function() {
 
     this.getFormData = function() {
         var data = {
-            name: $('#reg_name').val(),
-            phone: $('#reg_phone').val(),
-            email: $('#reg_email').val(),
-            pass: $('#reg_pass').val()
+            name: $('#regw_name').val(),
+            phone: $('#regw_phone').val(),
+            email: $('#regw_email').val(),
+            pass: $('#regw_pass').val()
         }
         if(data.name = "" || data.phone == "" || data.email == "" || data.pass == "") {
             app.message.show(app.lang.get("Ошибка"), app.lang.get("Заполните все поля"));

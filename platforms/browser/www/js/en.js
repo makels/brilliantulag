@@ -27,5 +27,19 @@ var EN = [
     ['Химическая чистка','Chemical cleaning'],
     ['Полировка кузова','Body polishing'],
     ['Чернение шин','Tire blackening'],
-    ['Чистка салона','Cleaning the salon']
+    ['Чистка салона','Cleaning the salon'],
+    ['Выбрано', 'Selected'],
+    ['Вход','Log in'],
+    ['Настройки','Settings'],
+    ['Выполненый заказ','Executing order'],
+    ['Информация','Information'],
+    ['Ошибка', 'Error'],
+    ['Сервис временно не доступен. Попробуйте позже', 'Service temporary unavailable. Try later.'],
+    ['E-mail или пароль указаны неверно', 'E-mail or password is invalid'],
+    ['Заполните все поля', 'Fill all fields'],
+    ['Ваш заказ принят. Ожидайте приезда нашего сотрудника.', 'You order is accept. Please wait for our worker.'],
+    ['Район работ:', 'Working place'],
+    ['Есть личный транспорт:', 'I have self transport'],
+    ['(могу доехать до клиента бесплатно)', '(I can reach the client for free)']
+
 ]

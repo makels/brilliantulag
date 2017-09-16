@@ -73,6 +73,7 @@ var WashForm = function() {
     }
 
     this.open = function() {
+        app.closeMenu();
         $(".form").hide();
         $(".wash-form").show();
     }

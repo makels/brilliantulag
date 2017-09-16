@@ -5,23 +5,18 @@ var RegisterForm = function() {
 
     this.init = function() {
         var scope = this;
-        $('#btn-sign').click(function() {
-            scope.signIn();
-        });
-
-        if(app.user.userData != null) {
-            $('#btn-sign').html('Вход');
-        }
     }
 
     this.open = function() {
+        app.closeMenu();
         $(".form").hide();
         $(".register-form").show();
     }
 
-    this.signIn = function() {
+    this.registration = function() {
         var scope = this;
         var data = this.getFormData();
+        if(data === false) return;
         $.ajax({
             url: app.apiUrl + '/register',
             type: 'post',
@@ -31,10 +26,6 @@ var RegisterForm = function() {
                 if(response.res == 0) {
                     app.user.setUserData(response.user);
                     app.open();
-                } else if(response.res == 1) {
-                    app.message.show(app.lang.get('Ошибка'), app.lang.get('Сервис временно не доступен. Попробуйте позже'));
-                } else if(response.res == 2) {
-                    app.message.show(app.lang.get('Ошибка'), app.lang.get('E-mail или пароль указаны неверно'));
                 }
             },
             error: function() {
@@ -44,11 +35,17 @@ var RegisterForm = function() {
     }
 
     this.getFormData = function() {
-        return {
-            email: $('#email').val(),
-            pass: $('#pass').val(),
-            is_worker: $('#is_worker').is(':checked')
+        var data = {
+            name: $('#reg_name').val(),
+            phone: $('#reg_phone').val(),
+            email: $('#reg_email').val(),
+            pass: $('#reg_pass').val()
         }
+        if(data.name = "" || data.phone == "" || data.email == "" || data.pass == "") {
+            app.message.show(app.lang.get("Ошибка"), app.lang.get("Заполните все поля"));
+            return false;
+        }
+        return data;
     }
 
     this.init();

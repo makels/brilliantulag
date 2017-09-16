@@ -45,7 +45,7 @@ i {
     width: 100%;
     background-image: url(../img/logo_full_new.png);
     background-repeat: no-repeat;
-    background-position: center 60px;
+    background-position: center 10px;
     z-index: 1;
 }
 
@@ -71,10 +71,29 @@ button {
     position: relative;
 }
 
+.checkbox-field {
+    position: relative;
+    padding: 10px 0;
+}
+
+.checkbox-field label {
+    position: absolute;
+    width: 100%;
+    top: 7px;
+    left: 50px;
+    color: #555;
+}
+
 label {
     line-height: 30px;
     font-size: 14px;
     color: #999;
+}
+
+label span {
+    font-size: 12px;
+    position: absolute;
+    top: 20px;
 }
 
 input {
@@ -92,6 +111,53 @@ input[type=checkbox] {
     width: 23px;
     height: 23px;
 }
+
+.checkbox {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #0c9cee;
+}
+
+.checkbox.checked:before {
+    content: "\f00c";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    color: #0c9cee;
+    font-size: 28px;
+    padding: 7px;
+    line-height: 40px;
+}
+
+.menu-wrapper {
+    height: 0;
+}
+
+.menu-wrapper i {
+    font-size: 18px !important;
+    width: 25px;
+    text-align: center;
+}
+
+.menu-wrapper ul {
+    list-style: none;
+}
+
+.menu-wrapper ul li {
+    line-height: 50px;
+}
+
+.menu-wrapper {
+    position: absolute;
+    top: 65px;
+    left: 8px;
+    color: #fff;
+    background-color: rgba(50, 50, 50, .95);
+    width: 80%;
+    z-index: 999;
+}
+
 
 .type-input, .services-input, .photo-input, .map-input {
     color: #333;
@@ -251,8 +317,9 @@ input[type=checkbox] {
 }
 
 .language-wrapper {
-    width: 99%;
-    height: 40px;
+    width: 82%;
+    margin-left: 60px;
+    height: 50px;
     border: 1px solid #0c9cee;
     border-left: none;
     position: absolute;
@@ -269,8 +336,8 @@ input[type=checkbox] {
 .language-wrapper li {
     border-left: 1px solid #0c9cee;
     float: left;
-    width: 33%;
-    line-height: 40px;
+    width: 32.9%;
+    line-height: 50px;
     color: #333;
     text-align: center;
 }

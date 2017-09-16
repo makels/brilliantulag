@@ -21,6 +21,5 @@ var User = function() {
         localStorage.setItem('user', JSON.stringify(data));
     }
 
-
     this.init();
 }
