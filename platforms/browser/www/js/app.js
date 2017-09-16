@@ -85,18 +85,16 @@ var App = function() {
     }
 
     this.openMenu = function() {
-        $( ".menu-wrapper" ).animate({
-            height: "+=290px",
-            opacity: "+=1"
-        }, 200);
+        $( ".menu-wrapper" ).animate({ height: "+=290px" }, 200, function() {
+            $(this).show();
+        });
         this.menu_opening = true;
     }
 
     this.closeMenu = function() {
-        $( ".menu-wrapper" ).animate({
-            height: "-=290px",
-            opacity: "-=1"
-        }, 200);
+        $( ".menu-wrapper" ).animate({ height: "-=290px" }, 200, function() {
+            $(this).hide();
+        });
         this.menu_opening = false;
     }
 

@@ -18,6 +18,8 @@ var EN = [
     ['Пароль:','Password'],
     ['Хочу работать','I want to be work'],
     ['Регистрация','Registration'],
+    ['Вы успешно зарегистрировались','You registered successful'],
+    ['Такой пользователь уже существует','This user is already exist'],
     ['Велосипед','Bike'],
     ['Мотоцикл','Motorbike'],
     ['Седан','Sedan'],

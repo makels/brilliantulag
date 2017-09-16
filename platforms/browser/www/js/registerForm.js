@@ -23,10 +23,15 @@ var RegisterForm = function() {
             dataType: 'json',
             data: data,
             success: function(response) {
-                if(response.res == 0) {
-                    app.user.setUserData(response.user);
-                    app.open();
+                if(response.res == 1) {
+                    app.message.show(app.lang.get('Регистрация'), app.lang.get('Такой пользователь уже существует'));
+                    return;
                 }
+                response.user.type = 0;
+                response.user.pass = data.pass;
+                app.user.setUserData(response.user);
+                app.message.show(app.lang.get('Регистрация'), app.lang.get('Вы успешно зарегистрировались'));
+                app.open();
             },
             error: function() {
                 app.message.show(app.lang.get('Ошибка'), app.lang.get('Сервис временно не доступен. Попробуйте позже'));
@@ -41,7 +46,7 @@ var RegisterForm = function() {
             email: $('#reg_email').val(),
             pass: $('#reg_pass').val()
         }
-        if(data.name = "" || data.phone == "" || data.email == "" || data.pass == "") {
+        if(data.name == "" || data.phone == "" || data.email == "" || data.pass == "") {
             app.message.show(app.lang.get("Ошибка"), app.lang.get("Заполните все поля"));
             return false;
         }

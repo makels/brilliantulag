@@ -8,7 +8,12 @@ var User = function() {
     this.init = function() {
         var userData = localStorage.getItem("user");
         if(userData != null) {
-            this.userData = JSON.parse(userData);
+            try {
+                this.userData = JSON.parse(userData);
+            } catch (ex) {
+                localStorage.removeItem("user");
+            }
+
         }
     }
 
