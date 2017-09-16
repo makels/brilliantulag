@@ -16,6 +16,7 @@ var EN = [
     ['Выбрано 0','Selected 0'],
     ['Заказать','Order'],
     ['Пароль:','Password'],
+    ['Вход','Sign in'],
     ['Хочу работать','I want to be work'],
     ['Регистрация','Registration'],
     ['Вы успешно зарегистрировались','You registered successful'],
@@ -42,6 +43,8 @@ var EN = [
     ['Ваш заказ принят. Ожидайте приезда нашего сотрудника.', 'You order is accept. Please wait for our worker.'],
     ['Район работ:', 'Working place'],
     ['Есть личный транспорт:', 'I have self transport'],
-    ['(могу доехать до клиента бесплатно)', '(I can reach the client for free)']
+    ['(могу доехать до клиента бесплатно)', '(I can reach the client for free)'],
+    ['Я зарегистрирован как сотрудник', 'I registered as customer'],
+    ['Неверный email или пароль', 'Wrong email or password']
 
 ]

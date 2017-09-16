@@ -17,6 +17,8 @@ var App = function() {
     
     this.mapForm = null;
     
+    this.settingsForm = new SettingsForm();
+    
     this.user = null;
     
     this.init = function() {
@@ -36,6 +38,8 @@ var App = function() {
             scope.registerForm = new RegisterForm();
             
             scope.registerWasherForm = new RegisterWasherForm();
+            
+            scope.loginForm = new LoginForm();
 
             $('.checkbox').click(function() {
                 $(this).toggleClass('checked');
