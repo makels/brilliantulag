@@ -4,6 +4,8 @@
 var App = function() {
 
     this.apiUrl = 'http://bulag.tk/admin/api';
+
+    this.apiGoogle = 'AIzaSyDwmDR0f3MXKPcU2WMPhFujNyiDXSDLs-c';
     
     this.lang = null;
 
@@ -54,10 +56,26 @@ var App = function() {
                 $('.type-wrapper').hide();
                 app.hideMask();
             });
-
+            scope.googlePlacesLoad();
             scope.open();
         });
 
+    }
+
+    this.initAutocomplete = function() {
+        var autocomplete = new google.maps.places.Autocomplete(document.getElementById('map-autocomplete'), {types: ['geocode']});
+        autocomplete.addListener('place_changed', function() {
+            app.washForm.address = $('#map-autocomplete').val();
+            var place = autocomplete.getPlace();
+            app.washForm.latlng = {
+                lat: place.geometry.location.lat(),
+                lng: place.geometry.location.lng()
+            };
+        });
+    }
+
+    this.googlePlacesLoad = function() {
+        $.getScript("https://maps.googleapis.com/maps/api/js?key=" + app.apiGoogle + "&libraries=places&callback=app.initAutocomplete");
     }
 
     this.open = function() {
