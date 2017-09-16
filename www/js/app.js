@@ -19,7 +19,7 @@ var App = function() {
         
         this.washForm = new WashForm();
         
-        this.mapForm = new MapForm();
+        //this.mapForm = new MapForm();
 
         this.registerForm = new RegisterForm();
         
@@ -32,6 +32,13 @@ var App = function() {
 
         $('#btn-register').click(function() {
             scope.registerForm.open();
+        });
+
+        $('.mask').click(function() {
+            scope.message.hide();
+            $('.services-wrapper').hide();
+            $('.type-wrapper').hide();
+            app.hideMask();
         });
 
         this.open();

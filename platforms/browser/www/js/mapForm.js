@@ -45,7 +45,6 @@ var MapForm = function() {
             var lng = position.coords.longitude;
             scope.map.animateCamera({
                 target: {lat: lat, lng: lng},
-                latLng: center,
                 zoom: 17
             }, function() {
                app.washForm.latlng = {

@@ -197,6 +197,7 @@ input[type=checkbox] {
     position: absolute;
     left: 10px;
     font-size: 18px !important;
+    color: #0c9cee !important;
 }
 
 .auto-photo-wrapper {
@@ -235,10 +236,6 @@ input[type=checkbox] {
     overflow: hidden;
     width: 98%;
     height: 30px;
-}
-
-#map-autocomplete {
-    font-size: 12px;
 }
 
 #btn-wash {

@@ -28,25 +28,25 @@
                     autocomplete.addListener('place_changed', function() {
 
                         $('#map-wrapper').show();
-                        app.mapForm.clearMarkers();
+                        //app.mapForm.clearMarkers();
                         app.washForm.address = $('#map-autocomplete').val();
-                        $('#map-value').html(app.washForm.address);
+                        //$('#map-value').html(app.washForm.address);
                         var place = autocomplete.getPlace();
                         app.washForm.latlng = {
                             lat: place.geometry.location.lat(),
                             lng: place.geometry.location.lng()
                         };
-                        app.mapForm.map.animateCamera({
-                            target: app.washForm.latlng,
-                            zoom: 17
-                        }, function() {
-
-                            var marker = app.mapForm.map.addMarker({
-                                position: app.washForm.latlng,
-                                animation: plugin.google.maps.Animation.BOUNCE
-                            });
-                            app.mapForm.markers.push(marker);
-                        });
+//                        app.mapForm.map.animateCamera({
+//                            target: app.washForm.latlng,
+//                            zoom: 17
+//                        }, function() {
+//
+//                            var marker = app.mapForm.map.addMarker({
+//                                position: app.washForm.latlng,
+//                                animation: plugin.google.maps.Animation.BOUNCE
+//                            });
+//                            app.mapForm.markers.push(marker);
+//                        });
 
                     });
                 } catch (e) {
@@ -118,6 +118,11 @@
                 </div>
 
                 <div class="field">
+                    <label>Адрес:</label><br>
+                    <input type="text" id="map-autocomplete" autocomplete="off" placeholder="Введите адрес" />
+                </div>
+
+                <div class="field">
                     <label>Тип:</label><br>
                     <div class="type-input"><div id="type-value">Седан</div><i style="color: #0c9cee !important;" class="fa fa-arrow-circle-down"></i></div>
                     <input type="hidden" id="model" value="2" />
@@ -133,15 +138,15 @@
                     <input type="text" id="date_time" />
                 </div>
 
-                <div class="field">
+                <!--div class="field">
                     <label>Местоположение:</label><br>
                     <div class="map-input"><div id="map-value">&nbsp;</div><i style="color: #0c9cee !important;" class="fa fa-map-marker"></i></div>
                     <input type="hidden" id="place" />
-                </div>
+                </div-->
 
                 <div class="field">
                     <label>Вид услуг:</label><br>
-                    <div class="services-input"><div id="services-value">Полировка кузова</div><i style="color: #0c9cee !important;" class="fa fa-arrow-circle-down"></i></div>
+                    <div class="services-input"><div id="services-value">Выбрано 0</div><i style="color: #0c9cee !important;" class="fa fa-arrow-circle-down"></i></div>
                     <input type="hidden" id="services" value="1"/>
                 </div>
             </div>
@@ -181,11 +186,11 @@
                 <button onclick="app.mapForm.setCurrentPosition();"><i class="fa fa-location-arrow" aria-hidden="true"></i></button>
                 <button style="float: right;"><i class="fa fa-language" aria-hidden="true"></i></button>
             </div>
-            <div class="field">
+            <!--div class="field">
                 <label>Адрес:</label><br>
                 <input type="search" id="map-autocomplete" autocomplete="off" />
             </div>
-            <div id="map-wrapper"></div>
+            <div id="map-wrapper"></div-->
         </div>
 
         <div class="mask"></div>
@@ -210,7 +215,7 @@
 
         <div class="services-wrapper">
             <ul>
-                <li value="0"><i class="fa fa-check selected"></i>Химическая чистка</li>
+                <li value="0"><i class="fa fa-check"></i>Химическая чистка</li>
                 <li value="1"><i class="fa fa-check"></i>Полировка кузова</li>
                 <li value="2"><i class="fa fa-check"></i>Чернение шин</li>
                 <li value="3"><i class="fa fa-check"></i>Чистка салона</li>

@@ -54,9 +54,9 @@ var WashForm = function() {
             $(this).hide();
         });
 
-        $('.map-input').click(function() {
-            app.mapForm.open();
-        });
+        // $('.map-input').click(function() {
+        //     app.mapForm.open();
+        // });
 
 
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -80,6 +80,7 @@ var WashForm = function() {
     this.send = function() {
         var scope = this;
         var order = this.getOrder();
+        if(this.checkOrder(order) === false) return;
         app.showMask();
         $.ajax({
             url: app.apiUrl + "/new_order",
@@ -125,10 +126,26 @@ var WashForm = function() {
         var scope = this;
         app.hideMask();
         this.services = "";
+        var i = 0;
         $.each($('.services-wrapper .selected'), function(index, el) {
+            i++;
             scope.services += $(el).parent().attr("value") + ";";
         });
         $('.services-wrapper').hide();
+        $('#services-value').html('Выбрано ' + i);
+    }
+
+    this.checkOrder = function(order) {
+        var err = false;
+        if(order.name == "") err = true;
+        if(order.phone == "") err = true;
+        if(order.model == "") err = true;
+        if(order.number == "") err = true;
+        if(order.place == "") err = true;
+        if(order.service.length == 0) err = true;
+        if(order.date_time == "") err = true;
+        if(err) app.message.show("Ошибка", "Заполните все поля");
+        return !err;
     }
 
     this.getOrder = function() {
