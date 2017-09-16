@@ -251,7 +251,7 @@ input[type=checkbox] {
 }
 
 .language-wrapper {
-    width: 100%;
+    width: 99%;
     height: 40px;
     border: 1px solid #0c9cee;
     border-left: none;

@@ -10,15 +10,18 @@
         <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
 
         <!-- Scripts -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwmDR0f3MXKPcU2WMPhFujNyiDXSDLs-c&libraries=places&callback=initAutocomplete" async defer></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="js/mask.js"></script>
         <script type="text/javascript" src="js/user.js"></script>
-        <script type="text/javascript" src="js/mapForm.js"></script>
+        <script type="text/javascript" src="js/ru.js"></script>
+        <script type="text/javascript" src="js/en.js"></script>
+        <script type="text/javascript" src="js/tu.js"></script>
+        <script type="text/javascript" src="js/lang.js"></script>
         <script type="text/javascript" src="js/registerForm.js"></script>
         <script type="text/javascript" src="js/washForm.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
-
 
         <script type="text/javascript">
 
@@ -27,32 +30,16 @@
                     var autocomplete = new google.maps.places.Autocomplete(document.getElementById('map-autocomplete'), {types: ['geocode']});
                     autocomplete.addListener('place_changed', function() {
 
-                        $('#map-wrapper').show();
-                        //app.mapForm.clearMarkers();
                         app.washForm.address = $('#map-autocomplete').val();
-                        //$('#map-value').html(app.washForm.address);
                         var place = autocomplete.getPlace();
                         app.washForm.latlng = {
                             lat: place.geometry.location.lat(),
                             lng: place.geometry.location.lng()
                         };
-//                        app.mapForm.map.animateCamera({
-//                            target: app.washForm.latlng,
-//                            zoom: 17
-//                        }, function() {
-//
-//                            var marker = app.mapForm.map.addMarker({
-//                                position: app.washForm.latlng,
-//                                animation: plugin.google.maps.Animation.BOUNCE
-//                            });
-//                            app.mapForm.markers.push(marker);
-//                        });
-
                     });
                 } catch (e) {
                     app.log(e.message);
                 }
-
             }
 
             document.addEventListener("deviceready", onDeviceReady, false);
@@ -63,28 +50,26 @@
                     app.log(e.message);
                     app.consoleLog();
                 }
-
             }
         </script>
-
     </head>
     <body>
         <div class="content form">
             <div class="language-wrapper">
                 <ul>
-                    <li id="turkmen" class="selected">Turkmen</li>
-                    <li id="russian">Русский</li>
-                    <li id="english">English</li>
+                    <li id="tu">Turkmen</li>
+                    <li id="ru">Русский</li>
+                    <li id="en">English</li>
                 </ul>
             </div>
             <div class="main-background"></div>
-            <div class="main-slogan">Моем машины до блеска с выездом на дом в Туркменистане</div>
+            <div class="main-slogan">@@Моем машины до блеска с выездом на дом в Туркменистане</div>
             <div class="main-wrapper">
                 <div class="buttons-wrapper">
-                    <button id="btn-wash">Я хочу помыть машину</button>
+                    <button id="btn-wash">@@Я хочу помыть машину</button>
                 </div>
                 <div class="buttons-wrapper">
-                    <button id="btn-register">Я хочу работать мойщиком</button>
+                    <button id="btn-register">@@Я хочу работать мойщиком</button>
                 </div>
             </div>
         </div>
@@ -94,11 +79,6 @@
             <div class="title-form">
                 <button id="btn-back" onclick="app.open();"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
                 <button id="btn-setting" onclick="app.washForm.onPhoto();"><i class="fa fa-camera" aria-hidden="true"></i></button>
-
-                <!--<button onclick="app.showLog();"><i class="fa fa-map-marker" aria-hidden="true"></i></button>-->
-                <!--<button onclick="app.clearLog();"><i class="fa fa-close" aria-hidden="true"></i></button>-->
-
-
                 <button id="btn-lang" style="float: right;"><i class="fa fa-language" aria-hidden="true"></i></button>
             </div>
 
@@ -108,50 +88,44 @@
 
             <div class="fieldset">
                 <div class="field">
-                    <label>Имя:</label><br>
+                    <label>@@Имя:</label><br>
                     <input type="text" id="name" />
                 </div>
 
                 <div class="field">
-                    <label>Телефон:</label><br>
+                    <label>@@Телефон:</label><br>
                     <input type="text" id="phone"/>
                 </div>
 
                 <div class="field">
-                    <label>Адрес:</label><br>
-                    <input type="text" id="map-autocomplete" autocomplete="off" placeholder="Введите адрес" />
+                    <label>@@Адрес:</label><br>
+                    <input type="text" id="map-autocomplete" autocomplete="off" placeholder="@@Введите адрес" />
                 </div>
 
                 <div class="field">
-                    <label>Тип:</label><br>
-                    <div class="type-input"><div id="type-value">Седан</div><i style="color: #0c9cee !important;" class="fa fa-arrow-circle-down"></i></div>
+                    <label>@@Тип:</label><br>
+                    <div class="type-input"><div id="type-value">@@Седан</div><i style="color: #0c9cee !important;" class="fa fa-arrow-circle-down"></i></div>
                     <input type="hidden" id="model" value="2" />
                 </div>
 
                 <div class="field">
-                    <label>Номер авто:</label><br>
+                    <label>@@Номер авто:</label><br>
                     <input type="text" id="number" />
                 </div>
 
                 <div class="field">
-                    <label>На время:</label><br>
+                    <label>@@На время:</label><br>
                     <input type="text" id="date_time" />
                 </div>
 
-                <!--div class="field">
-                    <label>Местоположение:</label><br>
-                    <div class="map-input"><div id="map-value">&nbsp;</div><i style="color: #0c9cee !important;" class="fa fa-map-marker"></i></div>
-                    <input type="hidden" id="place" />
-                </div-->
-
                 <div class="field">
-                    <label>Вид услуг:</label><br>
-                    <div class="services-input"><div id="services-value">Выбрано 0</div><i style="color: #0c9cee !important;" class="fa fa-arrow-circle-down"></i></div>
+                    <label>@@Вид услуг:</label><br>
+                    <div class="services-input"><div id="services-value">@@Выбрано 0</div><i style="color: #0c9cee !important;" class="fa fa-arrow-circle-down"></i></div>
                     <input type="hidden" id="services" value="1"/>
                 </div>
             </div>
             <div class="buttons-wrapper">
-                <button id="btn-order">Заказать</button>
+                <button id="btn-order">@@Заказать</button>
             </div>
         </div>
 
@@ -167,15 +141,15 @@
                     <input type="text" id="email" autocomplete="off" />
                 </div>
                 <div class="field">
-                    <label>Пароль:</label><br>
+                    <label>@@Пароль:</label><br>
                     <input type="password" id="pass"  autocomplete="off" />
                 </div>
                 <div class="field" style="margin-top: 10px;">
                     <input type="checkbox" id="is_worker" />
-                    &nbsp;&nbsp;<label style="position: absolute;">Хочу работать</label>
+                    &nbsp;&nbsp;<label style="position: absolute;">@@Хочу работать</label>
                 </div>
                 <div class="buttons-wrapper">
-                    <button id="btn-sign">Регистрация</button>
+                    <button id="btn-sign">@@Регистрация</button>
                 </div>
             </div>
         </div>
@@ -186,11 +160,6 @@
                 <button onclick="app.mapForm.setCurrentPosition();"><i class="fa fa-location-arrow" aria-hidden="true"></i></button>
                 <button style="float: right;"><i class="fa fa-language" aria-hidden="true"></i></button>
             </div>
-            <!--div class="field">
-                <label>Адрес:</label><br>
-                <input type="search" id="map-autocomplete" autocomplete="off" />
-            </div>
-            <div id="map-wrapper"></div-->
         </div>
 
         <div class="mask"></div>
@@ -204,27 +173,26 @@
 
         <div class="type-wrapper">
             <ul>
-                <li value="0">Велосипед</li>
-                <li value="1">Мотоцикл</li>
-                <li value="2">Седан</li>
-                <li value="3">Джип</li>
-                <li value="4">Микроавтобус</li>
-                <li value="5">Малый грузовик</li>
+                <li value="0">@@Велосипед</li>
+                <li value="1">@@Мотоцикл</li>
+                <li value="2">@@Седан</li>
+                <li value="3">@@Джип</li>
+                <li value="4">@@Микроавтобус</li>
+                <li value="5">@@Малый грузовик</li>
             </ul>
         </div>
 
         <div class="services-wrapper">
             <ul>
-                <li value="0"><i class="fa fa-check"></i>Химическая чистка</li>
-                <li value="1"><i class="fa fa-check"></i>Полировка кузова</li>
-                <li value="2"><i class="fa fa-check"></i>Чернение шин</li>
-                <li value="3"><i class="fa fa-check"></i>Чистка салона</li>
+                <li value="0"><i class="fa fa-check"></i>@@Химическая чистка</li>
+                <li value="1"><i class="fa fa-check"></i>@@Полировка кузова</li>
+                <li value="2"><i class="fa fa-check"></i>@@Чернение шин</li>
+                <li value="3"><i class="fa fa-check"></i>@@Чистка салона</li>
             </ul>
             <div class="buttons-wrapper">
                 <button onclick="app.washForm.onSelectedTypes();">OK</button>
             </div>
         </div>
 
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwmDR0f3MXKPcU2WMPhFujNyiDXSDLs-c&libraries=places&callback=initAutocomplete" async defer></script>
     </body>
 </html>

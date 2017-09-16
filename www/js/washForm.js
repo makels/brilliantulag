@@ -90,14 +90,14 @@ var WashForm = function() {
             success: function(response) {
                 app.hideMask();
                 if(response.res == 0) {
-                    app.message.show('Заказ', 'Ваш заказ принят. Ожидайте приезда нашего сотрудника.');
+                    app.message.show(app.lang.get('Заказ'), app.lang.get('Ваш заказ принят. Ожидайте приезда нашего сотрудника.'));
                 } else {
                     app.hideMask();
-                    app.message.show('Ошибка', 'Сервис временно не доступен. Попробуйте позже');
+                    app.message.show(app.lang.get('Ошибка'), app.lang.get('Сервис временно не доступен. Попробуйте позже'));
                 }
             },
             error: function() {
-                app.message.show('Ошибка', 'Сервис временно не доступен. Попробуйте позже');
+                app.message.show(app.lang.get('Ошибка'), app.lang.get('Сервис временно не доступен. Попробуйте позже'));
             }
         });
 
@@ -132,7 +132,7 @@ var WashForm = function() {
             scope.services += $(el).parent().attr("value") + ";";
         });
         $('.services-wrapper').hide();
-        $('#services-value').html('Выбрано ' + i);
+        $('#services-value').html(app.lang.get('Выбрано') + ' ' + i);
     }
 
     this.checkOrder = function(order) {
@@ -144,7 +144,7 @@ var WashForm = function() {
         if(order.place == "") err = true;
         if(order.service.length == 0) err = true;
         if(order.date_time == "") err = true;
-        if(err) app.message.show("Ошибка", "Заполните все поля");
+        if(err) app.message.show(app.lang.get("Ошибка"), app.lang.get("Заполните все поля"));
         return !err;
     }
 

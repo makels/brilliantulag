@@ -32,13 +32,13 @@ var RegisterForm = function() {
                     app.user.setUserData(response.user);
                     app.open();
                 } else if(response.res == 1) {
-                    app.message.show('Ошибка', 'Сервис временно не доступен. Попробуйте позже');
+                    app.message.show(app.lang.get('Ошибка'), app.lang.get('Сервис временно не доступен. Попробуйте позже'));
                 } else if(response.res == 2) {
-                    app.message.show('Ошибка', 'E-mail или пароль указаны неверно');
+                    app.message.show(app.lang.get('Ошибка'), app.lang.get('E-mail или пароль указаны неверно'));
                 }
             },
             error: function() {
-                app.message.show('Ошибка', 'Сервис временно не доступен. Попробуйте позже');
+                app.message.show(app.lang.get('Ошибка'), app.lang.get('Сервис временно не доступен. Попробуйте позже'));
             }
         });
     }
