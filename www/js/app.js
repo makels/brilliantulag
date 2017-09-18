@@ -36,6 +36,10 @@ var App = function() {
             scope.settingsForm = new SettingsForm();
 
             scope.registerForm = new RegisterForm();
+
+            scope.rateForm = new RateForm();
+
+            scope.orderForm = new OrderForm();
             
             scope.registerWasherForm = new RegisterWasherForm();
             
@@ -79,7 +83,7 @@ var App = function() {
                 $('.menu-wrapper ul').html($('#menu-wrapper-user ul').html());
             }
 
-            if(user != null || user.type == 1) {
+            if(user != null && user.type == 1) {
                 $('.menu-wrapper ul').html($('#menu-wrapper-washer ul').html());
             }
 
@@ -125,14 +129,20 @@ var App = function() {
     }
 
     this.openMenu = function() {
-        $( ".menu-wrapper" ).animate({ height: "+=290px" }, 200, function() {
+        var height = 290;
+        var user = this.getUser();
+        if(user.type == 1) height = 230;
+        $( ".menu-wrapper" ).animate({ height: "+=" + height + "px" }, 200, function() {
             $(this).show();
         });
         this.menu_opening = true;
     }
 
     this.closeMenu = function() {
-        $( ".menu-wrapper" ).animate({ height: "-=290px" }, 200, function() {
+        var height = 290;
+        var user = this.getUser();
+        if(user.type == 1) height = 230;
+        $( ".menu-wrapper" ).animate({ height: "-=" + height + "px" }, 200, function() {
             $(this).hide();
         });
         this.menu_opening = false;

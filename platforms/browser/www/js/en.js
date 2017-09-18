@@ -45,6 +45,10 @@ var EN = [
     ['Есть личный транспорт:', 'I have self transport'],
     ['(могу доехать до клиента бесплатно)', '(I can reach the client for free)'],
     ['Я зарегистрирован как сотрудник', 'I registered as customer'],
-    ['Неверный email или пароль', 'Wrong email or password']
+    ['Неверный email или пароль', 'Wrong email or password'],
+    ['Заказать мойку', 'Order a washing'],
+    ['Оценить работу', 'Rate work'],
+    ['Взять заказ', 'Take order'],
+    ['Текущий заказ', 'Current order']
 
 ]
