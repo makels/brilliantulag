@@ -49,6 +49,8 @@ var EN = [
     ['Заказать мойку', 'Order a washing'],
     ['Оценить работу', 'Rate work'],
     ['Взять заказ', 'Take order'],
-    ['Текущий заказ', 'Current order']
+    ['Текущий заказ', 'Current order'],
+    ['Вы не оформили заказ', 'You must be create order'],
+    ['Заказ', 'Order']
 
 ]

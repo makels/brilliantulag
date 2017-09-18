@@ -92,13 +92,17 @@ var WashForm = function() {
                 app.hideMask();
                 if(response.res == 0) {
                     app.message.show(app.lang.get('Заказ'), app.lang.get('Ваш заказ принят. Ожидайте приезда нашего сотрудника.'));
+                    localStorage.setItem("current_order", JSON.stringify(response.order));
+                    app.open();
                 } else {
                     app.hideMask();
                     app.message.show(app.lang.get('Ошибка'), app.lang.get('Сервис временно не доступен. Попробуйте позже'));
+                    app.open();
                 }
             },
             error: function() {
                 app.message.show(app.lang.get('Ошибка'), app.lang.get('Сервис временно не доступен. Попробуйте позже'));
+                app.open();
             }
         });
 
