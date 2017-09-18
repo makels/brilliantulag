@@ -36,12 +36,15 @@ var LoginForm = function() {
                 if(response.res == 0) {
                     if(type == 0) {
                         localStorage.setItem("currentLogin", 0);
-                        response.user.pass =
+                        response.user.pass = pass;
                         app.user.setUserData(response.user);
+                        $('.menu-wrapper ul').html($('#menu-wrapper-user ul').html());
                         app.open();
                     } else {
                         localStorage.setItem("currentLogin", 1);
+                        response.washer.pass = pass;
                         app.washer.setWasherData(response.washer);
+                        $('.menu-wrapper ul').html($('#menu-wrapper-washer ul').html());
                         app.open();
                     }
                 } else {

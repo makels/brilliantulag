@@ -30,7 +30,7 @@ var WashForm = function() {
             $(this).find('i').toggleClass('selected');
         });
 
-        $('.type-input').click(function() {
+        $('#wash_sel_type').click(function() {
             app.showMask();
             $(document).scrollTop(0);
             $('.type-wrapper').show();

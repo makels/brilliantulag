@@ -90,7 +90,7 @@
 
                 <div class="field">
                     <label>@@Тип:</label><br>
-                    <div class="type-input"><div id="type-value">@@Седан</div><i style="color: #0c9cee !important;" class="fa fa-arrow-circle-down"></i></div>
+                    <div class="type-input" id="wash_sel_type"><div id="type-value">@@Седан</div><i style="color: #0c9cee !important;" class="fa fa-arrow-circle-down"></i></div>
                     <input type="hidden" id="model" value="2" />
                 </div>
 
@@ -211,6 +211,7 @@
             <div class="title-form">
                 <button onclick="if(app.menu_opening) app.closeMenu(); else app.openMenu();"><i class="fa fa-bars" aria-hidden="true"></i></button>
                 <button onclick="app.open();"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                <button style="float: right;" onclick="app.settingsForm.refresh();"><i class="fa fa-refresh" aria-hidden="true"></i></button>
             </div>
             <div class="fieldset">
                 <div class="field">
@@ -235,7 +236,7 @@
                 </div>
                 <div class="field">
                     <label>@@Тип:</label><br>
-                    <div class="type-input"><div id="setting-type-value">@@Седан</div><i style="color: #0c9cee !important;" class="fa fa-arrow-circle-down"></i></div>
+                    <div class="type-input" id="settings_sel_type"><div id="setting-type-value">@@Седан</div><i style="color: #0c9cee !important;" class="fa fa-arrow-circle-down"></i></div>
                     <input type="hidden" id="setting_model" value="2" />
                 </div>
                 <div class="field">
@@ -276,6 +277,17 @@
             </ul>
         </div>
 
+        <div id="settings_type_wrapper" class="type-wrapper">
+            <ul>
+                <li value="0">@@Велосипед</li>
+                <li value="1">@@Мотоцикл</li>
+                <li value="2">@@Седан</li>
+                <li value="3">@@Джип</li>
+                <li value="4">@@Микроавтобус</li>
+                <li value="5">@@Малый грузовик</li>
+            </ul>
+        </div>
+
         <div class="services-wrapper">
             <ul>
                 <li value="0"><i class="fa fa-check"></i>@@Химическая чистка</li>
@@ -290,10 +302,25 @@
 
         <div class="menu-wrapper">
             <ul>
+            </ul>
+        </div>
+
+        <div style="display: none;" id="menu-wrapper-user">
+            <ul>
                 <li onclick="app.loginForm.open();"><i class="fa fa-lock"></i>&nbsp;@@Вход</li>
                 <li onclick="app.registerForm.open();"><i class="fa fa-user-plus"></i>&nbsp;@@Регистрация</li>
                 <li onclick="app.settingsForm.open();"><i class="fa fa-cog"></i>&nbsp;@@Настройки</li>
                 <li><i class="fa fa-automobile"></i>&nbsp;@@Выполненый заказ</li>
+                <li><i class="fa fa-info"></i>&nbsp;@@Информация</li>
+            </ul>
+        </div>
+
+        <div style="display: none;" id="menu-wrapper-washer">
+            <ul>
+                <li><i class="fa fa-automobile"></i>&nbsp;@@Текущий заказ</li>
+                <li onclick="app.loginForm.open();"><i class="fa fa-lock"></i>&nbsp;@@Вход</li>
+                <li onclick="app.registerForm.open();"><i class="fa fa-user-plus"></i>&nbsp;@@Регистрация</li>
+                <li onclick="app.settingsForm.open();"><i class="fa fa-cog"></i>&nbsp;@@Настройки</li>
                 <li><i class="fa fa-info"></i>&nbsp;@@Информация</li>
             </ul>
         </div>

@@ -16,9 +16,7 @@ var App = function() {
     this.washForm = null;
     
     this.mapForm = null;
-    
-    this.settingsForm = new SettingsForm();
-    
+
     this.user = null;
     
     this.init = function() {
@@ -34,6 +32,8 @@ var App = function() {
             scope.washer = new Washer();
 
             scope.washForm = new WashForm();
+
+            scope.settingsForm = new SettingsForm();
 
             scope.registerForm = new RegisterForm();
             
@@ -73,6 +73,16 @@ var App = function() {
                 $('.type-wrapper').hide();
                 app.hideMask();
             });
+
+            var user = scope.getUser();
+            if(user == null || user.type == 0) {
+                $('.menu-wrapper ul').html($('#menu-wrapper-user ul').html());
+            }
+
+            if(user != null || user.type == 1) {
+                $('.menu-wrapper ul').html($('#menu-wrapper-washer ul').html());
+            }
+
             scope.googlePlacesLoad();
             scope.open();
         });
@@ -99,6 +109,19 @@ var App = function() {
                 lng: place.geometry.location.lng()
             };
         });
+    }
+
+    this.getUser = function() {
+        var user = null;
+        if(localStorage.getItem("currentLogin") == null) return null;
+        if(localStorage.getItem("currentLogin") == 0) {
+            user = app.user.getUserData();
+            user.type = 0;
+        } else {
+            user = app.user.getUserData();
+            user.type = 1;
+        }
+        return user;
     }
 
     this.openMenu = function() {
