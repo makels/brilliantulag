@@ -121,7 +121,7 @@ var App = function() {
         if(localStorage.getItem("currentLogin") == 0) {
             user = app.user.getUserData();
             user.type = 0;
-        } else {
+        } else if(localStorage.getItem("currentLogin") == 1) {
             user = app.user.getUserData();
             user.type = 1;
         }

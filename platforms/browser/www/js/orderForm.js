@@ -13,6 +13,10 @@ var OrderForm = function() {
         $(".order-form").show();
     }
 
+    this.refreshOrders = function() {
+        
+    }
+
 
     this.init();
 }

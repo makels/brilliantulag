@@ -3,7 +3,7 @@
  */
 var User = function() {
 
-    this.userData = null;
+    this.userData = {};
 
     this.init = function() {
         var userData = localStorage.getItem("user");
