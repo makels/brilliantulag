@@ -131,7 +131,7 @@ var App = function() {
     this.openMenu = function() {
         var height = 290;
         var user = this.getUser();
-        if(user.type == 1) height = 230;
+        if(user != null && user.type == 1) height = 230;
         $( ".menu-wrapper" ).animate({ height: "+=" + height + "px" }, 200, function() {
             $(this).show();
         });
