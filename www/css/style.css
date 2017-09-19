@@ -347,3 +347,40 @@ input[type=checkbox] {
     color: #fff;
 }
 
+.order-wrapper {
+    position: relative;
+    padding: 20px 10px;
+    border-bottom: 2px solid #0c9cee;
+}
+
+.order-wrapper .info {
+    color: #555;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.order-wrapper .info span {
+    font-size: 20px;
+    color: #0c9cee;
+}
+
+.order-wrapper .info a {
+    color: #0c9cee;
+}
+
+.order-wrapper .address {
+    color: #777;
+}
+
+.order-wrapper button {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    top: 15px;
+    right: 0;
+}
+
+.order-wrapper button i {
+    color: #0c9cee !important;
+}

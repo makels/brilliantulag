@@ -266,6 +266,7 @@
                 <button onclick="app.open();"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
                 <button style="float: right;" onclick="app.orderForm.refreshOrders();"><i class="fa fa-refresh" aria-hidden="true"></i></button>
             </div>
+            <div class="orders-wrapper"></div>
         </div>
 
         <!-- Map Form -->
@@ -342,6 +343,14 @@
                 <li onclick="app.settingsForm.open();"><i class="fa fa-cog"></i>&nbsp;@@Настройки</li>
                 <li onclick="app.orderForm.open();"><i class="fa fa-automobile"></i>&nbsp;@@Текущий заказ</li>
             </ul>
+        </div>
+
+        <div id="order-wrapper-tpl" style="display: none;">
+            <div class="order-wrapper">
+                <div class="info"><span>{date_time}</span>&nbsp;{name}&nbsp;<a href="tel:+{phone}">+{phone}</a></div>
+                <div class="address">{address}</div>
+                <button onclick="app.orderDetail.open({id});"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+            </div>
         </div>
 
     </body>
