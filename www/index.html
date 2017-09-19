@@ -27,6 +27,8 @@
         <script type="text/javascript" src="js/rateForm.js"></script>
         <script type="text/javascript" src="js/orderForm.js"></script>
         <script type="text/javascript" src="js/orderDetail.js"></script>
+        <script type="text/javascript" src="js/datetimepicker.js"></script>
+        <script type="text/javascript" src="js/moment.min.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
 
         <script type="text/javascript">
@@ -104,7 +106,7 @@
 
                 <div class="field">
                     <label>@@На время:</label><br>
-                    <input type="text" id="date_time" />
+                    <div class="type-input" id="wash_sel_date"><div id="date_time_val"></div><i style="color: #0c9cee !important;" class="fa fa-arrow-circle-down"></i></div>
                 </div>
 
                 <div class="field">
@@ -297,6 +299,34 @@
             </div>
         </div>
 
+        <div class="date-wrapper">
+            <div class="date-wrapper-title">@@Выберите дату и время</div>
+            <table>
+                <tr>
+                    <td><button onclick="app.datePicker.minusDay();" class="date-btn-control"><i class="fa fa-minus"></i></button></td>
+                    <td><button onclick="app.datePicker.minusMonth();"class="date-btn-control"><i class="fa fa-minus"></i></button></td>
+                    <td><button onclick="app.datePicker.minusHour();"class="date-btn-control"><i class="fa fa-minus"></i></button></td>
+                    <td><button onclick="app.datePicker.minusMinutes();"class="date-btn-control"><i class="fa fa-minus"></i></button></td>
+                </tr>
+                <tr>
+                    <td><div id="day">19</div></td>
+                    <td><div id="month">Сентябрь</div></td>
+                    <td><div id="hours">18</div></td>
+                    <td><div id="minutes">30</div></td>
+                </tr>
+                <tr>
+                    <td><button onclick="app.datePicker.addDay();"class="date-btn-control"><i class="fa fa-plus"></i></button></td>
+                    <td><button onclick="app.datePicker.addMonth();"class="date-btn-control"><i class="fa fa-plus"></i></button></td>
+                    <td><button onclick="app.datePicker.addHour();"class="date-btn-control"><i class="fa fa-plus"></i></button></td>
+                    <td><button onclick="app.datePicker.addMinutes();"class="date-btn-control"><i class="fa fa-plus"></i></button></td>
+                </tr>
+            </table>
+            <div class="buttons-wrapper">
+                <button style="width: 100px;" onclick="app.datePicker.now();">Сегодня</button>
+                <button onclick="app.datePicker.ok();">Ок</button>
+            </div>
+        </div>
+
         <div class="type-wrapper">
             <ul>
                 <li value="0">@@Велосипед</li>
@@ -393,7 +423,7 @@
             <div class="buttons-wrapper">
                 <button class="btn-accept-order" onclick="app.orderDetailForm.accept();" style="display: none;">@@Принять заказ</button>
                 <button class="btn-unset-order" onclick="app.orderDetailForm.unset();" style="display: none;">@@Отказаться</button>
-                <button class="btn-start-order" onclick="app.orderDetailForm.start();" style="display: none;">@@Начал</button>
+                <button class="btn-start-order" onclick="app.orderDetailForm.start();" style="display: none;">@@Начал работать</button>
                 <button class="btn-end-order" onclick="app.orderDetailForm.end();" style="display: none;">@@Выполнен</button>
             </div>
         </div>

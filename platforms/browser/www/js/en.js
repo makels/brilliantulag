@@ -54,8 +54,8 @@ var EN = [
     ['Заказ', 'Order'],
     ['Принять заказ', 'Take order'],
     ['Отказаться', 'Cancel order'],
-    ['Начал', 'Start'],
+    ['Начал работать', 'Start work'],
     ['Выполнен', 'Complete order'],
-
+    ['Выберите дату и время', 'Select date and time']
 
 ]

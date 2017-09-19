@@ -46,6 +46,8 @@ var App = function() {
             scope.loginForm = new LoginForm();
             
             scope.orderDetailForm = new OrderDetailForm();
+            
+            scope.datePicker = new DateTimePicker();
 
             $('.checkbox').click(function() {
                 $(this).toggleClass('checked');

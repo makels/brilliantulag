@@ -10,6 +10,8 @@ var WashForm = function() {
     this.latlng = "";
 
     this.address = "";
+    
+    this.datetime = 0;
 
     this.init = function() {
 
@@ -34,6 +36,13 @@ var WashForm = function() {
             app.showMask();
             $(document).scrollTop(0);
             $('.type-wrapper').show();
+        });
+
+        $('#wash_sel_date').click(function() {
+            app.datePicker.select(function(date) {
+                $('#date_time_val').html(date.str);
+                scope.datetime = date.val;
+            });
         });
 
         $('.services-input').click(function() {
@@ -73,8 +82,10 @@ var WashForm = function() {
     }
 
     this.open = function() {
+        var current = moment().format("DD.MM.YYYY HH:mm");
         app.closeMenu();
         $(".form").hide();
+        $('#date_time_val').html(current);
         $(".wash-form").show();
     }
     
@@ -168,7 +179,7 @@ var WashForm = function() {
             address: scope.address,
             service: scope.services,
             //date_time: $('#date_time').val(),
-            date_time: 0, // TODO: Date and time order
+            date_time: this.datetime.format("YYYY-MM-DD HH:mm"), // TODO: Date and time order
             photo: scope.photo
         };
 
