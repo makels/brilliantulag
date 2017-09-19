@@ -51,6 +51,11 @@ var EN = [
     ['Взять заказ', 'Take order'],
     ['Текущий заказ', 'Current order'],
     ['Вы не оформили заказ', 'You must be create order'],
-    ['Заказ', 'Order']
+    ['Заказ', 'Order'],
+    ['Принять заказ', 'Take order'],
+    ['Отказаться', 'Cancel order'],
+    ['Начал', 'Start'],
+    ['Выполнен', 'Complete order'],
+
 
 ]
