@@ -167,7 +167,8 @@ var WashForm = function() {
             place: scope.latlng,
             address: scope.address,
             service: scope.services,
-            date_time: $('#date_time').val(),
+            //date_time: $('#date_time').val(),
+            date_time: 0, // TODO: Date and time order
             photo: scope.photo
         };
 

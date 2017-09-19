@@ -36,14 +36,19 @@ var OrderForm = function() {
     }
 
     this.setOrders = function(orders) {
+        var self = "";
         var cnt = "";
         var tmpl = $('#order-wrapper-tpl').html();
+        var washer = app.washer.getWasherData();
         $.each(orders, function(index, order) {
+            if(order.washer_id == washer.id) self = "self";
+            else self = "";
             cnt +=
                 tmpl.replace(new RegExp("{date_time}", 'g'), order.date_time).
                 replace(new RegExp("{name}", 'g'), order.name).
                 replace(new RegExp("{phone}", 'g'), order.phone).
                 replace(new RegExp("{address}", 'g'), order.address).
+                replace(new RegExp("{self}", 'g'), self).
                 replace(new RegExp("{id}", 'g'), order.id);
         });
         $('.orders-wrapper').html(cnt);

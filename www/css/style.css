@@ -4,7 +4,7 @@ body {
 
 i {
     font-size: 28px !important;
-    color: #fff !important;
+    color: #fff;
 }
 
 .form {
@@ -162,10 +162,10 @@ input[type=checkbox] {
 .type-input, .services-input, .photo-input, .map-input {
     color: #333;
     font-size: 20px;
-    width: 100%;
+    /*width: 100%;*/
     background: #eee;
     padding: 7px;
-    height: 24px;
+    min-height: 24px;
     border-bottom: 2px solid #0c9cee;
     position: relative;
 }
@@ -382,5 +382,9 @@ input[type=checkbox] {
 }
 
 .order-wrapper button i {
-    color: #0c9cee !important;
+    color: #0c9cee;
+}
+
+.order-wrapper i.self {
+    color: #374e02;
 }

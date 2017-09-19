@@ -44,6 +44,8 @@ var App = function() {
             scope.registerWasherForm = new RegisterWasherForm();
             
             scope.loginForm = new LoginForm();
+            
+            scope.orderDetailForm = new OrderDetailForm();
 
             $('.checkbox').click(function() {
                 $(this).toggleClass('checked');
@@ -213,6 +215,16 @@ var App = function() {
         document.write(localStorage.getItem('log'));
     }
 
+    this.getCarTypeName = function(type) {
+        var type_name = $('#settings_type_wrapper').find('li[value="' + type + '"]').html();
+        return type_name;
+    }
+
+    this.getServiceName = function(service) {
+        var service_name = $('#services_type_wrapper').find('li[value="' + service + '"]').html();
+        return service_name;
+    }
+    
 }
 
 var app = new App();
