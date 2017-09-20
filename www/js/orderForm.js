@@ -41,10 +41,13 @@ var OrderForm = function() {
         var tmpl = $('#order-wrapper-tpl').html();
         var washer = app.washer.getWasherData();
         $.each(orders, function(index, order) {
+            var m = moment(order.date_time);
+            var time = "";
+            if(m.isValid()) time = moment(order.date_time).format("DD.MM HH:mm");
             if(order.washer_id == washer.id) self = "self";
             else self = "";
             cnt +=
-                tmpl.replace(new RegExp("{date_time}", 'g'), order.date_time).
+                tmpl.replace(new RegExp("{date_time}", 'g'), time).
                 replace(new RegExp("{name}", 'g'), order.name).
                 replace(new RegExp("{phone}", 'g'), order.phone).
                 replace(new RegExp("{address}", 'g'), order.address).

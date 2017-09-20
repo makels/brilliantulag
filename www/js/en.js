@@ -56,6 +56,8 @@ var EN = [
     ['Отказаться', 'Cancel order'],
     ['Начал работать', 'Start work'],
     ['Выполнен', 'Complete order'],
-    ['Выберите дату и время', 'Select date and time']
-
+    ['Выберите дату и время', 'Select date and time'],
+    ['Стандарт', 'Standart'],
+    ['Премиум', 'Premium'],
+    ['Полный', 'Full']
 ]

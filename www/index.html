@@ -71,6 +71,7 @@
                 <button onclick="if(app.menu_opening) app.closeMenu(); else app.openMenu();"><i class="fa fa-bars" aria-hidden="true"></i></button>
                 <button id="btn-back" onclick="app.open();"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
                 <button id="btn-setting" onclick="app.washForm.onPhoto();"><i class="fa fa-camera" aria-hidden="true"></i></button>
+                <div id="order_price"></div>
             </div>
 
             <div class="auto-photo-wrapper">
@@ -96,7 +97,7 @@
                 <div class="field">
                     <label>@@Тип:</label><br>
                     <div class="type-input" id="wash_sel_type"><div id="type-value">@@Седан</div><i style="color: #0c9cee !important;" class="fa fa-arrow-circle-down"></i></div>
-                    <input type="hidden" id="model" value="2" />
+                    <input type="hidden" id="model" value="0" />
                 </div>
 
                 <div class="field">
@@ -111,8 +112,8 @@
 
                 <div class="field">
                     <label>@@Вид услуг:</label><br>
-                    <div class="services-input"><div id="services-value">@@Выбрано 0</div><i style="color: #0c9cee !important;" class="fa fa-arrow-circle-down"></i></div>
-                    <input type="hidden" id="services" value="1"/>
+                    <div class="services-input"><div id="services-value">@@Стандарт</div><i style="color: #0c9cee !important;" class="fa fa-arrow-circle-down"></i></div>
+                    <input type="hidden" id="services" value="0"/>
                 </div>
             </div>
             <div class="buttons-wrapper">
@@ -303,10 +304,10 @@
             <div class="date-wrapper-title">@@Выберите дату и время</div>
             <table>
                 <tr>
-                    <td><button onclick="app.datePicker.minusDay();" class="date-btn-control"><i class="fa fa-minus"></i></button></td>
-                    <td><button onclick="app.datePicker.minusMonth();"class="date-btn-control"><i class="fa fa-minus"></i></button></td>
-                    <td><button onclick="app.datePicker.minusHour();"class="date-btn-control"><i class="fa fa-minus"></i></button></td>
-                    <td><button onclick="app.datePicker.minusMinutes();"class="date-btn-control"><i class="fa fa-minus"></i></button></td>
+                    <td><button onclick="app.datePicker.addDay();" class="date-btn-control"><i class="fa fa-arrow-up"></i></button></td>
+                    <td><button onclick="app.datePicker.addMonth();"class="date-btn-control"><i class="fa fa-arrow-up"></i></button></td>
+                    <td><button onclick="app.datePicker.addHour();"class="date-btn-control"><i class="fa fa-arrow-up"></i></button></td>
+                    <td><button onclick="app.datePicker.addMinutes();"class="date-btn-control"><i class="fa fa-arrow-up"></i></button></td>
                 </tr>
                 <tr>
                     <td><div id="day">19</div></td>
@@ -315,10 +316,10 @@
                     <td><div id="minutes">30</div></td>
                 </tr>
                 <tr>
-                    <td><button onclick="app.datePicker.addDay();"class="date-btn-control"><i class="fa fa-plus"></i></button></td>
-                    <td><button onclick="app.datePicker.addMonth();"class="date-btn-control"><i class="fa fa-plus"></i></button></td>
-                    <td><button onclick="app.datePicker.addHour();"class="date-btn-control"><i class="fa fa-plus"></i></button></td>
-                    <td><button onclick="app.datePicker.addMinutes();"class="date-btn-control"><i class="fa fa-plus"></i></button></td>
+                    <td><button onclick="app.datePicker.minusDay();"class="date-btn-control"><i class="fa fa-arrow-down"></i></button></td>
+                    <td><button onclick="app.datePicker.minusMonth();"class="date-btn-control"><i class="fa fa-arrow-down"></i></button></td>
+                    <td><button onclick="app.datePicker.minusHour();"class="date-btn-control"><i class="fa fa-arrow-down"></i></button></td>
+                    <td><button onclick="app.datePicker.minusMinutes();"class="date-btn-control"><i class="fa fa-arrow-down"></i></button></td>
                 </tr>
             </table>
             <div class="buttons-wrapper">
@@ -329,32 +330,23 @@
 
         <div class="type-wrapper">
             <ul>
-                <li value="0">@@Велосипед</li>
-                <li value="1">@@Мотоцикл</li>
-                <li value="2">@@Седан</li>
-                <li value="3">@@Джип</li>
-                <li value="4">@@Микроавтобус</li>
-                <li value="5">@@Малый грузовик</li>
+                <li value="0">@@Седан</li>
+                <li value="1">@@Джип</li>
             </ul>
         </div>
 
         <div id="settings_type_wrapper" class="type-wrapper">
             <ul>
-                <li value="0">@@Велосипед</li>
-                <li value="1">@@Мотоцикл</li>
-                <li value="2">@@Седан</li>
-                <li value="3">@@Джип</li>
-                <li value="4">@@Микроавтобус</li>
-                <li value="5">@@Малый грузовик</li>
+                <li value="0">@@Седан</li>
+                <li value="1">@@Джип</li>
             </ul>
         </div>
 
         <div class="services-wrapper">
             <ul>
-                <li value="0"><i class="fa fa-check"></i>@@Химическая чистка</li>
-                <li value="1"><i class="fa fa-check"></i>@@Полировка кузова</li>
-                <li value="2"><i class="fa fa-check"></i>@@Чернение шин</li>
-                <li value="3"><i class="fa fa-check"></i>@@Чистка салона</li>
+                <li value="0"><i class="fa fa-check selected"></i>@@Стандарт</li>
+                <li value="1"><i class="fa fa-check"></i>@@Премиум</li>
+                <li value="2"><i class="fa fa-check"></i>@@Полный</li>
             </ul>
             <div class="buttons-wrapper">
                 <button onclick="app.washForm.onSelectedTypes();">OK</button>
@@ -363,10 +355,9 @@
 
         <div id="services_type_wrapper" style="display: none;">
             <ul>
-                <li value="0">@@Химическая чистка</li>
-                <li value="1">@@Полировка кузова</li>
-                <li value="2">@@Чернение шин</li>
-                <li value="3">@@Чистка салона</li>
+                <li value="0">@@Стандарт</li>
+                <li value="1">@@Премиум</li>
+                <li value="2">@@Полный</li>
             </ul>
         </div>
 

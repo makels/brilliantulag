@@ -55,5 +55,6 @@ var TU = [
     ['Принять заказ','Sargydy kabul etmek'],
     ['Отказаться','Ret etmek'],
     ['Начал работать','Işe başlamak'],
-    ['Заказ выполнен','Sargyt ýerine ýetirilen']
+    ['Выполнен','Sargyt ýerine ýetirilen'],
+    ['Выберите дату и время', 'Select date and time']
 ]

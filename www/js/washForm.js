@@ -11,7 +11,7 @@ var WashForm = function() {
 
     this.address = "";
     
-    this.datetime = 0;
+    this.datetime = moment();
 
     this.init = function() {
 
@@ -26,10 +26,13 @@ var WashForm = function() {
             $('#model').val(val);
             $('.type-wrapper').hide();
             app.hideMask();
+            scope.refreshPrice();
         });
 
         $('.services-wrapper').find('li').click(function() {
+            $('.services-wrapper').find('li i').removeClass('selected');
             $(this).find('i').toggleClass('selected');
+            scope.refreshPrice();
         });
 
         $('#wash_sel_type').click(function() {
@@ -62,6 +65,8 @@ var WashForm = function() {
             $('.auto-photo-wrapper').hide();
             $(this).hide();
         });
+
+        this.refreshPrice();
 
         // $('.map-input').click(function() {
         //     app.mapForm.open();
@@ -145,10 +150,11 @@ var WashForm = function() {
         var i = 0;
         $.each($('.services-wrapper .selected'), function(index, el) {
             i++;
-            scope.services += $(el).parent().attr("value") + ";";
+            scope.services = $(el).parent().attr("value");
         });
         $('.services-wrapper').hide();
-        $('#services-value').html(app.lang.get('Выбрано') + ' ' + i);
+        $('#services-value').html(app.lang.get(app.getServiceName(scope.services)));
+
     }
 
     this.checkOrder = function(order) {
@@ -177,7 +183,7 @@ var WashForm = function() {
             number: $('#number').val(),
             place: scope.latlng,
             address: scope.address,
-            service: scope.services,
+            service: Number($('.services-wrapper .selected').parent().attr("value")),
             //date_time: $('#date_time').val(),
             date_time: this.datetime.format("YYYY-MM-DD HH:mm"), // TODO: Date and time order
             photo: scope.photo
@@ -202,6 +208,24 @@ var WashForm = function() {
             $('.auto-photo-wrapper').hide();
         },{ quality: 50,
             destinationType: Camera.DestinationType.DATA_URL
+        });
+    }
+
+    this.refreshPrice = function() {
+        var order = this.getOrder();
+        $.ajax({
+            url: app.apiUrl + "/price",
+            type: 'post',
+            dataType: 'json',
+            data: {
+                service: order.service,
+                type: order.model
+            },
+            success: function(response) {
+                if(response.res == 0) {
+                    $('#order_price').html(app.lang.get("Стоимость") + ": " + response.price + " TMT");
+                }
+            }
         });
     }
 

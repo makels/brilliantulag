@@ -55,11 +55,11 @@ var SettingsForm = function() {
             if(data == null) data = app.washer.getWasherData();
             if(data != null) {
                 settings = data;
-                settings.car_type = 2;
+                settings.car_type = 0;
             }
         } else {
             settings = JSON.parse(settings);
-            if(settings.car_type == "") settings.car_type = 2;
+            if(settings.car_type == "") settings.car_type = 0;
         }
 
         if( settings != null) {

@@ -44,11 +44,12 @@ var OrderDetailForm = function() {
         var services = order.service.split(";");
         var services_names = "";
         $.each(services, function(index, service) {
-            if(service != "") services_names += app.getServiceName(service) + ";";
+            if(service != "") services_names += app.getServiceName(service);
         });
         var cnt = tmpl.replace(new RegExp("{date_time}", 'g'), order.date_time).
                 replace(new RegExp("{name}", 'g'), order.name).
                 replace(new RegExp("{phone}", 'g'), order.phone).
+                replace(new RegExp("{photo}", 'g'), order.photo).
                 replace(new RegExp("{address}", 'g'), order.address).
                 replace(new RegExp("{number}", 'g'), order.number).
                 replace(new RegExp("{type}", 'g'), app.getCarTypeName(order.model)).
@@ -68,6 +69,10 @@ var OrderDetailForm = function() {
                    $('.order-detail-wrapper .btn-end-order').show();
                    break;
            }
+            
+           if(order.photo != "") {
+               $('.order-detail-wrapper .order-detail-photo').show();
+           } 
         }, 100);
     }
 
