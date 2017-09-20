@@ -51,6 +51,7 @@ var OrderDetailForm = function() {
                 replace(new RegExp("{phone}", 'g'), order.phone).
                 replace(new RegExp("{photo}", 'g'), order.photo).
                 replace(new RegExp("{address}", 'g'), order.address).
+                replace(new RegExp("{distance}", 'g'), order.distance).
                 replace(new RegExp("{number}", 'g'), order.number).
                 replace(new RegExp("{type}", 'g'), app.getCarTypeName(order.model)).
                 replace(new RegExp("{id}", 'g'), order.id).

@@ -51,6 +51,7 @@ var OrderForm = function() {
                 replace(new RegExp("{name}", 'g'), order.name).
                 replace(new RegExp("{phone}", 'g'), order.phone).
                 replace(new RegExp("{address}", 'g'), order.address).
+                replace(new RegExp("{distance}", 'g'), order.distance > 0 ? order.distance + " " + app.lang.get("км") + " " : "").
                 replace(new RegExp("{self}", 'g'), self).
                 replace(new RegExp("{id}", 'g'), order.id);
         });

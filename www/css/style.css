@@ -439,10 +439,15 @@ input[type=checkbox] {
     padding: 10px 0;
 }
 
-#order_price {
-    float: right;
-    line-height: 50px;
-    color: #999;
+.distance {
     font-size: 18px;
-    font-weight: bold;
+    color: #FF9800;
 }
+
+/*#order_price {*/
+    /*float: right;*/
+    /*line-height: 50px;*/
+    /*color: #999;*/
+    /*font-size: 18px;*/
+    /*font-weight: bold;*/
+/*}*/

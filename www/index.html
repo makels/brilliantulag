@@ -71,7 +71,6 @@
                 <button onclick="if(app.menu_opening) app.closeMenu(); else app.openMenu();"><i class="fa fa-bars" aria-hidden="true"></i></button>
                 <button id="btn-back" onclick="app.open();"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
                 <button id="btn-setting" onclick="app.washForm.onPhoto();"><i class="fa fa-camera" aria-hidden="true"></i></button>
-                <div id="order_price"></div>
             </div>
 
             <div class="auto-photo-wrapper">
@@ -114,6 +113,10 @@
                     <label>@@Вид услуг:</label><br>
                     <div class="services-input"><div id="services-value">@@Стандарт</div><i style="color: #0c9cee !important;" class="fa fa-arrow-circle-down"></i></div>
                     <input type="hidden" id="services" value="0"/>
+                </div>
+                <div class="field">
+                    <label>@@Сумма заказа:</label>
+                    <div class="type-input"><div id="order_price"></div></div>
                 </div>
             </div>
             <div class="buttons-wrapper">
@@ -379,7 +382,7 @@
         <div style="display: none;" id="menu-wrapper-washer">
             <ul>
                 <li onclick="app.loginForm.open();"><i class="fa fa-lock"></i>&nbsp;@@Вход</li>
-                <li onclick="app.registerForm.open();"><i class="fa fa-user-plus"></i>&nbsp;@@Регистрация</li>
+                <li onclick="app.registerWasherForm.open();"><i class="fa fa-user-plus"></i>&nbsp;@@Регистрация</li>
                 <li onclick="app.settingsForm.open();"><i class="fa fa-cog"></i>&nbsp;@@Настройки</li>
                 <li onclick="app.orderForm.open();"><i class="fa fa-automobile"></i>&nbsp;@@Текущий заказ</li>
             </ul>
@@ -388,7 +391,7 @@
         <div id="order-wrapper-tpl" style="display: none;">
             <div class="order-wrapper">
                 <div class="info"><span>{date_time}</span>&nbsp;{name}&nbsp;<a href="tel:{phone}">{phone}</a></div>
-                <div class="address">{address}</div>
+                <div class="address"><span class="distance">{distance}</span>{address}</div>
                 <button onclick="app.orderDetailForm.open({id});"><i class="fa fa-arrow-circle-right {self}" aria-hidden="true"></i></button>
             </div>
         </div>
@@ -403,6 +406,8 @@
             <div class="type-input">{phone}</div>
             <label>@@Адрес:</label>
             <div class="type-input">{address}</div>
+            <label>@@Расстояние:</label>
+            <div class="type-input">{distance}&nbsp;@@км</div>
             <label>@@Тип:</label>
             <div class="type-input">{type}</div>
             <label>@@Номер авто:</label>

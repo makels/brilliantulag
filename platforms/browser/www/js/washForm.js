@@ -223,7 +223,7 @@ var WashForm = function() {
             },
             success: function(response) {
                 if(response.res == 0) {
-                    $('#order_price').html(app.lang.get("Стоимость") + ": " + response.price + " TMT");
+                    $('#order_price').html(response.price + " TMT");
                 }
             }
         });

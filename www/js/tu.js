@@ -56,5 +56,12 @@ var TU = [
     ['Отказаться','Ret etmek'],
     ['Начал работать','Işe başlamak'],
     ['Выполнен','Sargyt ýerine ýetirilen'],
-    ['Выберите дату и время', 'Select date and time']
+    ['Выберите дату и время', 'Select date and time'],
+    ['Сумма заказа:','Order cost:'],
+    ['Стандарт', 'Standart'],
+    ['Премиум', 'Premium'],
+    ['Полный', 'Full'],
+    ['Расстояние:', 'Aralyk:'],
+    ['Расстояние', 'Aralyk'],
+    ['км', 'km']
 ]

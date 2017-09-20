@@ -51,8 +51,9 @@ var RegisterWasherForm = function() {
             email: $('#regw_email').val(),
             pass: $('#regw_pass').val(),
             address: $('#regw_address').val(),
-            transport: $('#regw_transport').hasClass("selected"),
-            place: this.latlng.lat + ";" + this.latlng.lng
+            transport: $('#regw_transport').hasClass("checked"),
+            lat: this.latlng.lat,
+            lng: this.latlng.lng
         }
         if(data.name == "" || data.phone == "" || data.email == "" || data.pass == "" || data.address == "") {
             app.message.show(app.lang.get("Ошибка"), app.lang.get("Заполните все поля"));

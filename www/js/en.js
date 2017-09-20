@@ -57,7 +57,11 @@ var EN = [
     ['Начал работать', 'Start work'],
     ['Выполнен', 'Complete order'],
     ['Выберите дату и время', 'Select date and time'],
+    ['Сумма заказа:','Order cost:'],
     ['Стандарт', 'Standart'],
     ['Премиум', 'Premium'],
-    ['Полный', 'Full']
+    ['Полный', 'Full'],
+    ['Расстояние:', 'Distance:'],
+    ['Расстояние', 'Distance'],
+    ['км', 'km']
 ]
