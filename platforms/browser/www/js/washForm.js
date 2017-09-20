@@ -92,6 +92,10 @@ var WashForm = function() {
         $(".form").hide();
         $('#date_time_val').html(current);
         $(".wash-form").show();
+
+        app.back = function() {
+            app.open();
+        }
     }
     
     this.send = function() {

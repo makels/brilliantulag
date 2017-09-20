@@ -97,6 +97,12 @@ var App = function() {
 
     }
 
+    this.back = null;
+    
+    this.backBtn = function() {
+        if(this.back != null) this.back();
+    }
+    
     this.initAutocomplete = function() {
         var scope = this;
         this.orderPlace = new google.maps.places.Autocomplete(document.getElementById('map-autocomplete'), {types: ['geocode']});

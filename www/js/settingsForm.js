@@ -31,6 +31,10 @@ var SettingsForm = function() {
         this.fill();
         $(".form").hide();
         $(".settings-form").show();
+
+        app.back = function() {
+            app.open();
+        }
     }
 
     this.save = function() {

@@ -15,6 +15,10 @@ var OrderDetailForm = function() {
         this.refreshOrder();
         $(".form").hide();
         $(".order-detail-form").show();
+
+        app.back = function() {
+            app.open();
+        }
     }
 
     this.refreshOrder = function(id) {
@@ -43,6 +47,8 @@ var OrderDetailForm = function() {
         var tmpl = $('#order-detail-wrapper-tpl').html();
         var services = order.service.split(";");
         var services_names = "";
+        var distance = order.distance > 0 ? order.distance + " " + app.lang.get("км") + " " : "";
+        if(order.distance == 0 && (order.lat > 0 || order.lng > 0)) distance = app.lang.get("Рядом с вами");
         $.each(services, function(index, service) {
             if(service != "") services_names += app.getServiceName(service);
         });
@@ -51,7 +57,7 @@ var OrderDetailForm = function() {
                 replace(new RegExp("{phone}", 'g'), order.phone).
                 replace(new RegExp("{photo}", 'g'), order.photo).
                 replace(new RegExp("{address}", 'g'), order.address).
-                replace(new RegExp("{distance}", 'g'), order.distance).
+                replace(new RegExp("{distance}", 'g'), distance).
                 replace(new RegExp("{number}", 'g'), order.number).
                 replace(new RegExp("{type}", 'g'), app.getCarTypeName(order.model)).
                 replace(new RegExp("{id}", 'g'), order.id).

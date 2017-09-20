@@ -33,9 +33,19 @@
 
         <script type="text/javascript">
             document.addEventListener("deviceready", onDeviceReady, false);
+            document.addEventListener("backbutton", backBtn, false);
             function onDeviceReady() {
                 try {
                     app.init();
+                } catch (e) {
+                    app.log(e.message);
+                    app.consoleLog();
+                }
+            }
+
+            function backBtn() {
+                try {
+                    app.backBtn();
                 } catch (e) {
                     app.log(e.message);
                     app.consoleLog();
@@ -407,7 +417,7 @@
             <label>@@Адрес:</label>
             <div class="type-input">{address}</div>
             <label>@@Расстояние:</label>
-            <div class="type-input">{distance}&nbsp;@@км</div>
+            <div class="type-input">{distance}</div>
             <label>@@Тип:</label>
             <div class="type-input">{type}</div>
             <label>@@Номер авто:</label>

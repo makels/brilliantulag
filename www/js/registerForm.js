@@ -11,6 +11,10 @@ var RegisterForm = function() {
         app.closeMenu();
         $(".form").hide();
         $(".register-form").show();
+
+        app.back = function() {
+            app.open();
+        }
     }
 
     this.registration = function() {

@@ -71,6 +71,10 @@ var MapForm = function() {
         app.closeMenu();
         $('.form').hide();
         $('.map-form').show();
+
+        app.back = function() {
+            app.open();
+        }
     }
 
 

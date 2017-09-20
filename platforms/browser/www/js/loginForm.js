@@ -15,6 +15,10 @@ var LoginForm = function() {
         app.closeMenu();
         $(".form").hide();
         $(".login-form").show();
+
+        app.back = function() {
+            app.open();
+        }
     }
     
     this.login = function() {

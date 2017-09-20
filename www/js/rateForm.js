@@ -16,6 +16,10 @@ var RateForm = function() {
         app.closeMenu();
         $(".form").hide();
         $(".rate-form").show();
+
+        app.back = function() {
+            app.open();
+        }
     }
     
     

@@ -12,6 +12,10 @@ var OrderForm = function() {
         this.refreshOrders();
         $(".form").hide();
         $(".order-form").show();
+
+        app.back = function() {
+            app.open();
+        }
     }
 
     this.refreshOrders = function() {
@@ -46,12 +50,14 @@ var OrderForm = function() {
             if(m.isValid()) time = moment(order.date_time).format("DD.MM HH:mm");
             if(order.washer_id == washer.id) self = "self";
             else self = "";
+            var distance = order.distance > 0 ? order.distance + " " + app.lang.get("км") + " " : "";
+            if(order.distance == 0 && (order.lat > 0 || order.lng > 0)) distance = app.lang.get("Рядом с вами") + " ";
             cnt +=
                 tmpl.replace(new RegExp("{date_time}", 'g'), time).
                 replace(new RegExp("{name}", 'g'), order.name).
                 replace(new RegExp("{phone}", 'g'), order.phone).
                 replace(new RegExp("{address}", 'g'), order.address).
-                replace(new RegExp("{distance}", 'g'), order.distance > 0 ? order.distance + " " + app.lang.get("км") + " " : "").
+                replace(new RegExp("{distance}", 'g'), distance).
                 replace(new RegExp("{self}", 'g'), self).
                 replace(new RegExp("{id}", 'g'), order.id);
         });
