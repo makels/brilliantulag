@@ -272,7 +272,27 @@
         <div class="rate-form form">
             <div class="title-form">
                 <button onclick="if(app.menu_opening) app.closeMenu(); else app.openMenu();"><i class="fa fa-bars" aria-hidden="true"></i></button>
-                <button onclick="app.open();"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                <button onclick="app.orderDetailForm.open();"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+            </div>
+            <div class="fieldset">
+                <label>@@Клиент:</label><br>
+                <div class="type-input" id="rate_client"></div>
+                <label>@@Ваша оценка:</label><br>
+                <div class="rate-stars-wrapper">
+                    <ul>
+                        <li value="1"><i class="fa fa-star"></i></li>
+                        <li value="2"><i class="fa fa-star"></i></li>
+                        <li value="3"><i class="fa fa-star"></i></li>
+                        <li value="4"><i class="fa fa-star"></i></li>
+                        <li value="5"><i class="fa fa-star"></i></li>
+                    </ul>
+                </div>
+                <label>@@Ваш отзыв:</label><br>
+                <textarea id="review_text"></textarea>
+                <div class="buttons-wrapper">
+                    <button onclick="app.rateForm.add();">@@Добавить отзыв</button>
+                </div>
+                <div id="reviews-wrapper"></div>
             </div>
         </div>
 
@@ -291,6 +311,7 @@
             <div class="title-form">
                 <button onclick="if(app.menu_opening) app.closeMenu(); else app.openMenu();"><i class="fa fa-bars" aria-hidden="true"></i></button>
                 <button onclick="app.orderForm.open();"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                <button style="float: right;" onclick="app.rateForm.open();"><i class="fa fa-star" aria-hidden="true"></i></button>
             </div>
             <div class="order-detail-wrapper"></div>
         </div>
@@ -403,6 +424,23 @@
                 <div class="info"><span>{date_time}</span>&nbsp;{name}&nbsp;<a href="tel:{phone}">{phone}</a></div>
                 <div class="address"><span class="distance">{distance}</span>{address}</div>
                 <button onclick="app.orderDetailForm.open({id});"><i class="fa fa-arrow-circle-right {self}" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <div id="rate-wrapper-tpl" style="display: none;">
+            <div class="rate-wrapper">
+                <div class="info"><span>{date}</span>&nbsp;{washer_name}&nbsp;
+                    <div class="rate-stars-small" rate="{rate}">
+                        <ul>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="review-text">{review-text}</div>
             </div>
         </div>
 

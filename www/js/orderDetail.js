@@ -5,12 +5,14 @@ var OrderDetailForm = function() {
 
     this.id = 0;
 
+    this.order = null;
+
     this.init = function() {
         var scope = this;
     }
 
     this.open = function(id) {
-        this.id = id;
+        if(id) this.id = id;
         app.closeMenu();
         this.refreshOrder();
         $(".form").hide();
@@ -21,7 +23,7 @@ var OrderDetailForm = function() {
         }
     }
 
-    this.refreshOrder = function(id) {
+    this.refreshOrder = function() {
         var scope = this;
         $.ajax({
             url: app.apiUrl + "/get_order",
@@ -44,6 +46,7 @@ var OrderDetailForm = function() {
     }
 
     this.setOrder = function(order) {
+        if(order) this.order = order;
         var tmpl = $('#order-detail-wrapper-tpl').html();
         var services = order.service.split(";");
         var services_names = "";
