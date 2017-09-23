@@ -46,8 +46,14 @@ var App = function() {
             scope.loginForm = new LoginForm();
             
             scope.orderDetailForm = new OrderDetailForm();
+
+            scope.clientOrderDetailForm = new ClientOrderDetailForm();
             
             scope.datePicker = new DateTimePicker();
+
+            scope.clientOrders = new ClientOrders();
+
+            scope.clientRateForm = new ClientRateForm();
 
             $('.checkbox').click(function() {
                 $(this).toggleClass('checked');
@@ -83,12 +89,20 @@ var App = function() {
             });
 
             var user = scope.getUser();
-            if(user == null || user.type == 0) {
+
+            if(user == null) {
                 $('.menu-wrapper ul').html($('#menu-wrapper-user ul').html());
+                window.setTimeout(function() { $('.menu-wrapper .menu-item-login').show(); },500);
+            }
+
+            if(user != null && user.type == 0) {
+                $('.menu-wrapper ul').html($('#menu-wrapper-user ul').html());
+                window.setTimeout(function() { $('.menu-wrapper .menu-item-logout').show(); },500);
             }
 
             if(user != null && user.type == 1) {
                 $('.menu-wrapper ul').html($('#menu-wrapper-washer ul').html());
+                window.setTimeout(function() { $('.menu-wrapper .menu-item-logout').show(); },500);
             }
 
             scope.googlePlacesLoad();
@@ -101,6 +115,11 @@ var App = function() {
     
     this.backBtn = function() {
         if(this.back != null) this.back();
+    }
+
+    this.logout = function() {
+        localStorage.removeItem("currentLogin");
+        document.location.reload();
     }
     
     this.initAutocomplete = function() {
@@ -231,6 +250,11 @@ var App = function() {
     this.getServiceName = function(service) {
         var service_name = $('#services_type_wrapper').find('li[value="' + service + '"]').html();
         return service_name;
+    }
+
+    this.getOrderStatusName = function(status) {
+        var status = $('#order_status_names').find('li[value="' + status + '"]').html();
+        return status;
     }
     
 }

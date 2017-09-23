@@ -27,6 +27,9 @@
         <script type="text/javascript" src="js/rateForm.js"></script>
         <script type="text/javascript" src="js/orderForm.js"></script>
         <script type="text/javascript" src="js/orderDetail.js"></script>
+        <script type="text/javascript" src="js/clientOrderDetailForm.js"></script>
+        <script type="text/javascript" src="js/clientOrders.js"></script>
+        <script type="text/javascript" src="js/clientRateForm.js"></script>
         <script type="text/javascript" src="js/datetimepicker.js"></script>
         <script type="text/javascript" src="js/moment.min.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
@@ -296,6 +299,34 @@
             </div>
         </div>
 
+        <!-- Client Rate Form -->
+        <div class="client-rate-form form">
+            <div class="title-form">
+                <button onclick="if(app.menu_opening) app.closeMenu(); else app.openMenu();"><i class="fa fa-bars" aria-hidden="true"></i></button>
+                <button onclick="app.clientOrderDetailForm.open();"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+            </div>
+            <div class="fieldset">
+                <label>@@Мойщик:</label><br>
+                <div class="type-input" id="rate_washer"></div>
+                <label>@@Ваша оценка:</label><br>
+                <div class="rate-stars-wrapper">
+                    <ul>
+                        <li value="1"><i class="fa fa-star"></i></li>
+                        <li value="2"><i class="fa fa-star"></i></li>
+                        <li value="3"><i class="fa fa-star"></i></li>
+                        <li value="4"><i class="fa fa-star"></i></li>
+                        <li value="5"><i class="fa fa-star"></i></li>
+                    </ul>
+                </div>
+                <label>@@Ваш отзыв:</label><br>
+                <textarea id="client_review_text"></textarea>
+                <div class="buttons-wrapper">
+                    <button onclick="app.clientRateForm.add();">@@Добавить отзыв</button>
+                </div>
+                <div id="washer-reviews-wrapper"></div>
+            </div>
+        </div>
+
         <!-- Order Form -->
         <div class="order-form form">
             <div class="title-form">
@@ -306,12 +337,34 @@
             <div class="orders-wrapper"></div>
         </div>
 
+        <!-- Client Orders Form -->
+        <div class="client-orders-form form">
+            <div class="title-form">
+                <button onclick="if(app.menu_opening) app.closeMenu(); else app.openMenu();"><i class="fa fa-bars" aria-hidden="true"></i></button>
+                <button onclick="app.open();"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                <button style="float: right;" onclick="app.clientOrders.refreshOrders();"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+            </div>
+            <div class="client-orders-wrapper">
+                <div class="not-found">@@Нет заказов</div>
+            </div>
+        </div>
+
         <!-- Order Detail Form -->
         <div class="order-detail-form form">
             <div class="title-form">
                 <button onclick="if(app.menu_opening) app.closeMenu(); else app.openMenu();"><i class="fa fa-bars" aria-hidden="true"></i></button>
                 <button onclick="app.orderForm.open();"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
                 <button style="float: right;" onclick="app.rateForm.open();"><i class="fa fa-star" aria-hidden="true"></i></button>
+            </div>
+            <div class="order-detail-wrapper"></div>
+        </div>
+
+        <!-- Client Order Detail Form -->
+        <div class="client-order-detail-form form">
+            <div class="title-form">
+                <button onclick="if(app.menu_opening) app.closeMenu(); else app.openMenu();"><i class="fa fa-bars" aria-hidden="true"></i></button>
+                <button onclick="app.clientOrders.open();"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                <button id="client-order-detail-rate-btn" style="float: right;" onclick="app.clientRateForm.open();"><i class="fa fa-star" aria-hidden="true"></i></button>
             </div>
             <div class="order-detail-wrapper"></div>
         </div>
@@ -395,6 +448,15 @@
             </ul>
         </div>
 
+        <div id="order_status_names" style="display: none;">
+            <ul>
+                <li value="0">@@Новый</li>
+                <li value="1">@@Принят</li>
+                <li value="2">@@В работе</li>
+                <li value="3">@@Завершен</li>
+            </ul>
+        </div>
+
         <div class="menu-wrapper">
             <ul>
             </ul>
@@ -402,17 +464,19 @@
 
         <div style="display: none;" id="menu-wrapper-user">
             <ul>
-                <li onclick="app.loginForm.open();"><i class="fa fa-lock"></i>&nbsp;@@Вход</li>
+                <li style="display: none;" class="menu-item-login" onclick="app.loginForm.open();"><i class="fa fa-lock"></i>&nbsp;@@Вход</li>
+                <li style="display: none;" class="menu-item-logout" onclick="app.logout();"><i class="fa fa-lock"></i>&nbsp;@@Выход</li>
                 <li onclick="app.registerForm.open();"><i class="fa fa-user-plus"></i>&nbsp;@@Регистрация</li>
                 <li onclick="app.settingsForm.open();"><i class="fa fa-cog"></i>&nbsp;@@Настройки</li>
                 <li onclick="app.washForm.open();"><i class="fa fa-automobile"></i>&nbsp;@@Заказать мойку</li>
-                <li onclick="app.rateForm.open();"><i class="fa fa-star"></i>&nbsp;@@Оценить работу</li>
+                <li onclick="app.clientOrders.open();"><i class="fa fa-th-list"></i>&nbsp;@@Мои заказы</li>
             </ul>
         </div>
 
         <div style="display: none;" id="menu-wrapper-washer">
             <ul>
-                <li onclick="app.loginForm.open();"><i class="fa fa-lock"></i>&nbsp;@@Вход</li>
+                <li style="display: none;" class="menu-item-login" onclick="app.loginForm.open();"><i class="fa fa-lock"></i>&nbsp;@@Вход</li>
+                <li style="display: none;" class="menu-item-logout" onclick="app.logout();"><i class="fa fa-lock"></i>&nbsp;@@Выход</li>
                 <li onclick="app.registerWasherForm.open();"><i class="fa fa-user-plus"></i>&nbsp;@@Регистрация</li>
                 <li onclick="app.settingsForm.open();"><i class="fa fa-cog"></i>&nbsp;@@Настройки</li>
                 <li onclick="app.orderForm.open();"><i class="fa fa-automobile"></i>&nbsp;@@Текущий заказ</li>
@@ -427,9 +491,34 @@
             </div>
         </div>
 
+        <div id="client-order-wrapper-tpl" style="display: none;">
+            <div class="order-wrapper">
+                <div class="info"><span>{date_time}</span>&nbsp;{name}&nbsp;<a href="tel:{phone}">{phone}</a></div>
+                <div class="address"><span class="distance">{status}</span> {address}</div>
+                <button onclick="app.clientOrderDetailForm.open({id});"><i class="fa fa-arrow-circle-right {self}" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
         <div id="rate-wrapper-tpl" style="display: none;">
             <div class="rate-wrapper">
                 <div class="info"><span>{date}</span>&nbsp;{washer_name}&nbsp;
+                    <div class="rate-stars-small" rate="{rate}">
+                        <ul>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                            <li><i class="fa fa-star"></i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="review-text">{review-text}</div>
+            </div>
+        </div>
+
+        <div id="client-rate-wrapper-tpl" style="display: none;">
+            <div class="rate-wrapper">
+                <div class="info"><span>{date}</span>&nbsp;{client_name}&nbsp;
                     <div class="rate-stars-small" rate="{rate}">
                         <ul>
                             <li><i class="fa fa-star"></i></li>
@@ -470,6 +559,28 @@
                 <button class="btn-start-order" onclick="app.orderDetailForm.start();" style="display: none;">@@Начал работать</button>
                 <button class="btn-end-order" onclick="app.orderDetailForm.end();" style="display: none;">@@Выполнен</button>
             </div>
+        </div>
+
+        <div id="client-order-detail-wrapper-tpl" style="display: none;">
+            <div class="order-detail-photo" style="display:none;">
+                <img src="http://bulag.tk/admin/uploads/{photo}">
+            </div>
+            <label>@@Имя:</label>
+            <div class="type-input">{name}</div>
+            <label>@@Телефон:</label>
+            <div class="type-input">{phone}</div>
+            <label>@@Адрес:</label>
+            <div class="type-input">{address}</div>
+            <label>@@Мойщик:</label>
+            <div class="type-input">{washer}</div>
+            <label>@@Тип:</label>
+            <div class="type-input">{type}</div>
+            <label>@@Номер авто:</label>
+            <div class="type-input">{number}</div>
+            <label>@@Время:</label>
+            <div class="type-input">{date_time}</div>
+            <label>@@Услуги:</label>
+            <div class="type-input">{services}</div>
         </div>
 
 

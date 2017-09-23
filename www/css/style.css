@@ -533,3 +533,13 @@ textarea {
     background-color: #eee;
     padding: 10px;
 }
+
+.client-orders-wrapper .not-found {
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+    background-color: #eee;
+    margin-top: 20px;
+    color: #333;
+    border-bottom: 2px solid #0c9cee;
+}

@@ -43,13 +43,13 @@ var LoginForm = function() {
                         response.user.pass = pass;
                         app.user.setUserData(response.user);
                         $('.menu-wrapper ul').html($('#menu-wrapper-user ul').html());
-                        app.open();
+                        document.location.reload();
                     } else {
                         localStorage.setItem("currentLogin", 1);
                         response.washer.pass = pass;
                         app.washer.setWasherData(response.washer);
                         $('.menu-wrapper ul').html($('#menu-wrapper-washer ul').html());
-                        app.open();
+                        document.location.reload();
                     }
                 } else {
                     app.message.show(app.lang.get("Ошибка"), app.lang.get("Неверный email или пароль"));
