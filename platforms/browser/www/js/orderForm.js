@@ -40,6 +40,7 @@ var OrderForm = function() {
     }
 
     this.setOrders = function(orders) {
+        if(orders.length == 0) return;
         var self = "";
         var cnt = "";
         var tmpl = $('#order-wrapper-tpl').html();

@@ -19,7 +19,7 @@ var ClientOrderDetailForm = function() {
         $(".client-order-detail-form").show();
 
         app.back = function() {
-            app.open();
+            app.clientOrders.open();
         }
     }
 

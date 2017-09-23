@@ -23,7 +23,7 @@ var ClientRateForm = function() {
 
         this.getWasherReviews();
         app.back = function() {
-            app.orderDetailForm.open();
+            app.clientOrderDetailForm.open();
         }
     }
 

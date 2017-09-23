@@ -534,7 +534,7 @@ textarea {
     padding: 10px;
 }
 
-.client-orders-wrapper .not-found {
+.client-orders-wrapper .not-found, .orders-wrapper .not-found {
     width: 100%;
     text-align: center;
     padding: 30px 0;
