@@ -167,7 +167,7 @@ var WashForm = function() {
         if(order.phone == "") err = true;
         if(order.model == "") err = true;
         if(order.number == "") err = true;
-        if(order.place == "") err = true;
+        //if(order.place == "") err = true;
         if(order.service.length == 0) err = true;
         if(order.date_time == "") err = true;
         if(err) app.message.show(app.lang.get("Ошибка"), app.lang.get("Заполните все поля"));
@@ -186,7 +186,7 @@ var WashForm = function() {
             model: $('#model').val(),
             number: $('#number').val(),
             place: scope.latlng,
-            address: scope.address,
+            address: $('#map-autocomplete').val(),
             service: Number($('.services-wrapper .selected').parent().attr("value")),
             //date_time: $('#date_time').val(),
             date_time: this.datetime.format("YYYY-MM-DD HH:mm"), // TODO: Date and time order
