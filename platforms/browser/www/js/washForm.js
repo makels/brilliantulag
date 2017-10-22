@@ -146,6 +146,30 @@ var WashForm = function() {
         }
 
     }
+
+    this.openAddresses = function() {
+        if(typeof(app.settingsForm.data.address) != "undefined") {
+            var addresses = app.settingsForm.data.address;
+            var cnt = "";
+            $.each(addresses, function(index, item) {
+                cnt += '<li onclick="app.washForm.onSelectedAddress('+ index +');">' + item.address + '</li>';
+            });
+            $('.addresses-wrapper ul').html(cnt);
+            app.showMask();
+            $('.addresses-wrapper').show();
+        }
+    }
+
+    this.onSelectedAddress = function(index) {
+        app.hideMask();
+        $('.addresses-wrapper').hide();
+        var address = app.settingsForm.data.address[index];
+        $('#map-autocomplete').val(address.address);
+        this.latlng = {
+            lat: address.lat,
+            lng: address.lng
+        };
+    }
     
     this.onSelectedTypes = function() {
         var scope = this;

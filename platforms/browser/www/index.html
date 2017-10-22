@@ -104,6 +104,7 @@
                 <div class="field">
                     <label>@@Адрес:</label><br>
                     <input type="text" id="map-autocomplete" autocomplete="off" placeholder="@@Введите адрес" />
+                    <i onclick="app.washForm.openAddresses();" style="color: #0c9cee !important;position: absolute;top: 35px;right: -7px;" class="fa fa-arrow-circle-down"></i>
                 </div>
 
                 <div class="field">
@@ -239,6 +240,12 @@
                 <div class="field">
                     <label>@@Имя:</label><br>
                     <input type="text" id="setting_name" autocomplete="off" />
+                </div>
+                <div class="settings-address-list"></div>
+                <div class="field">
+                    <label>@@Добавить адрес:</label><br>
+                    <div class="type-input" id="address_sel_type"><div id="address-item-value"></div><i style="color: #0c9cee !important;" class="fa fa-plus-circle"></i></div>
+                    <input type="hidden" id="setting_address" value="0" />
                 </div>
                 <div class="field">
                     <label>@@Баланс:</label><br>
@@ -424,6 +431,12 @@
             </ul>
         </div>
 
+        <div class="address-wrapper">
+            <input type="text" id="add_new_address" placeholder="@@Введите адрес">
+            <button id="btn_add_new_address">@@Добавить</button>
+            <button id="btn_cancel_new_address">@@Отмена</button>
+        </div>
+
         <div id="settings_type_wrapper" class="type-wrapper">
             <ul>
                 <li value="0">@@Седан</li>
@@ -440,6 +453,10 @@
             <div class="buttons-wrapper">
                 <button onclick="app.washForm.onSelectedTypes();">OK</button>
             </div>
+        </div>
+
+        <div class="addresses-wrapper">
+            <ul></ul>
         </div>
 
         <div id="services_type_wrapper" style="display: none;">

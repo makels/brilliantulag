@@ -126,6 +126,7 @@ var App = function() {
         var scope = this;
         this.orderPlace = new google.maps.places.Autocomplete(document.getElementById('map-autocomplete'), {types: ['geocode']});
         this.washerPlace = new google.maps.places.Autocomplete(document.getElementById('regw_address'), {types: ['geocode']});
+        this.settingsPlace = new google.maps.places.Autocomplete(document.getElementById('add_new_address'), {types: ['geocode']});
         this.orderPlace.addListener('place_changed', function() {
             app.washForm.address = $('#map-autocomplete').val();
             var place = scope.orderPlace.getPlace();
@@ -141,6 +142,15 @@ var App = function() {
                 lat: place.geometry.location.lat(),
                 lng: place.geometry.location.lng()
             };
+        });
+        this.settingsPlace.addListener('place_changed', function() {
+            var place = scope.settingsPlace.getPlace();
+            if(typeof(app.settingsForm.address) == "undefined") app.settingsForm.address = [];
+            app.settingsForm.address.push({
+                address: $('#add_new_address').val(),
+                lat: place.geometry.location.lat(),
+                lng: place.geometry.location.lng()
+            });
         });
     }
 

@@ -3,7 +3,9 @@
  */
 var SettingsForm = function() {
 
-    this.data = {}
+    this.data = {};
+
+    this.address = [];
 
     this.car_type = "";
 
@@ -24,6 +26,25 @@ var SettingsForm = function() {
             $(document).scrollTop(0);
             $('.type-wrapper').show();
         });
+        
+        $('#address_sel_type').click(function() {
+            app.showMask();
+            $(document).scrollTop(0);
+            $('.address-wrapper').show();
+        });
+
+        $('#btn_add_new_address').click(function() {
+            scope.addNewAddress();
+            app.hideMask();
+            $('.address-wrapper').hide();
+        });
+
+        $('#btn_cancel_new_address').click(function() {
+            app.hideMask();
+            $('.address-wrapper').hide();
+        });
+
+        this.updateAddressList();
     }
 
     this.open = function() {
@@ -40,6 +61,7 @@ var SettingsForm = function() {
     this.save = function() {
         var data = {
             name: $('#setting_name').val(),
+            address: this.address,
             email: $('#setting_email').html(),
             phone: $('#setting_phone').val(),
             car_type: this.car_type,
@@ -48,6 +70,48 @@ var SettingsForm = function() {
 
         localStorage.setItem('settings', JSON.stringify(data));
         app.open();
+    }
+
+    this.addNewAddress = function() {
+        var data = {
+            name: $('#setting_name').val(),
+            address: this.address,
+            email: $('#setting_email').html(),
+            phone: $('#setting_phone').val(),
+            car_type: this.car_type,
+            number: $('#setting_number').val()
+        }
+        localStorage.setItem('settings', JSON.stringify(data));
+        this.updateAddressList();
+    }
+    
+    this.updateAddressList = function() {
+        if(this.data.address.length > 0) {
+            var addressContent = "";
+            $.each(this.data.address, function(index, item) {
+                addressContent += '<div class="field"><label>' + app.lang.get("Адрес:") + '</label><br><div class="type-input">' + item.address + '<i onclick="app.settingsForm.deleteAddress(\'' + item.address + '\');" style="color: #0c9cee !important;" class="fa fa-minus-circle"></i></div></div>';
+            });
+            $('.settings-address-list').html(addressContent);
+        }
+    }
+
+    this.deleteAddress = function(address) {
+        var a = [];
+        $.each(this.address, function(index, item) {
+            if(item.address != address) a.push(item);
+        });
+        this.address = a;
+        this.data.address = this.address;
+        var data = {
+            name: $('#setting_name').val(),
+            address: this.address,
+            email: $('#setting_email').html(),
+            phone: $('#setting_phone').val(),
+            car_type: this.car_type,
+            number: $('#setting_number').val()
+        }
+        localStorage.setItem('settings', JSON.stringify(data));
+        this.updateAddressList();
     }
 
     this.fill = function() {
@@ -69,6 +133,9 @@ var SettingsForm = function() {
         if( settings != null) {
             try {
                 this.data = settings;
+                if(typeof(settings.address) != "undefined") {
+                    this.address = settings.address;
+                }
                 var type_name = $('#settings_type_wrapper').find('li[value="' + this.data.car_type + '"]').html();
                 // Settings form
                 $('#setting_name').val(this.data.name);
