@@ -148,7 +148,7 @@ var WashForm = function() {
     }
 
     this.openAddresses = function() {
-        if(typeof(app.settingsForm.data.address) != "undefined") {
+        if(typeof(app.settingsForm.data.address) != "undefined" && app.settingsForm.data.address.length > 0) {
             var addresses = app.settingsForm.data.address;
             var cnt = "";
             $.each(addresses, function(index, item) {

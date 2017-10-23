@@ -87,13 +87,13 @@ var SettingsForm = function() {
     }
     
     this.updateAddressList = function() {
+        var addressContent = "";
         if(typeof(this.data.address) != 'undefined' && this.data.address.length > 0) {
-            var addressContent = "";
             $.each(this.data.address, function(index, item) {
                 addressContent += '<div class="field"><label>' + app.lang.get("Адрес:") + '</label><br><div class="type-input">' + item.address + '<i onclick="app.settingsForm.deleteAddress(\'' + item.address + '\');" style="color: #0c9cee !important;" class="fa fa-minus-circle"></i></div></div>';
             });
-            $('.settings-address-list').html(addressContent);
         }
+        $('.settings-address-list').html(addressContent);
     }
 
     this.deleteAddress = function(address) {

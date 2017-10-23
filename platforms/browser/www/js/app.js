@@ -85,6 +85,8 @@ var App = function() {
                 scope.message.hide();
                 $('.services-wrapper').hide();
                 $('.type-wrapper').hide();
+                $('.address-wrapper').hide();
+                $('.addresses-wrapper').hide();
                 app.hideMask();
             });
 
