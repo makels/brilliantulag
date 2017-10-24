@@ -73,6 +73,15 @@ var SettingsForm = function() {
     }
 
     this.addNewAddress = function() {
+        var address = $('#add_new_address').val();
+        if(address != "" && this.findAddress(address) === false) {
+            this.address.push({
+                address: $('#add_new_address').val(),
+                lat: 37.9600766,
+                lng: 58.3260629
+            });
+        }
+
         this.data = {
             name: $('#setting_name').val(),
             address: this.address,
@@ -84,6 +93,14 @@ var SettingsForm = function() {
         localStorage.setItem('settings', JSON.stringify(this.data));
         $('#add_new_address').val('');
         this.updateAddressList();
+    }
+
+    this.findAddress = function(address) {
+        var res = false;
+        $.each(this.address, function(index, el) {
+            if(el.address == address) res = true;
+        });
+        return res;
     }
     
     this.updateAddressList = function() {
