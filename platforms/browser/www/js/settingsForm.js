@@ -146,10 +146,13 @@ var SettingsForm = function() {
             if(data != null) {
                 settings = data;
                 settings.car_type = 0;
+                settings.email = data.email;
             }
         } else {
             settings = JSON.parse(settings);
             if(settings.car_type == "") settings.car_type = 0;
+            var data = app.user.getUserData();
+            settings.email = data.email;
         }
 
         if( settings != null) {

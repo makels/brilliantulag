@@ -137,6 +137,7 @@
             </div>
             <div class="buttons-wrapper">
                 <button id="btn-order">@@Заказать</button>
+                <button id="btn-order-sms">@@Оплатить СМС</button>
             </div>
         </div>
 
@@ -395,27 +396,28 @@
             <div class="message-body"></div>
             <div class="buttons-wrapper">
                 <button onclick="app.message.hide();">OK</button>
+                <button id="message-copy-btn" style="display:none;" onclick="app.message.copy();">@@Копировать текст</button>
             </div>
         </div>
 
         <div class="date-wrapper">
             <div class="date-wrapper-title">@@Выберите дату и время</div>
-            <table>
+            <table cellspacing="0" cellpadding="0">
                 <tr>
                     <td><button onclick="app.datePicker.addDay();" class="date-btn-control"><i class="fa fa-arrow-up"></i></button></td>
-                    <td><button onclick="app.datePicker.addMonth();"class="date-btn-control"><i class="fa fa-arrow-up"></i></button></td>
+                    <td style="border-right: 1px solid #999;"><button onclick="app.datePicker.addMonth();"class="date-btn-control"><i class="fa fa-arrow-up"></i></button></td>
                     <td><button onclick="app.datePicker.addHour();"class="date-btn-control"><i class="fa fa-arrow-up"></i></button></td>
                     <td><button onclick="app.datePicker.addMinutes();"class="date-btn-control"><i class="fa fa-arrow-up"></i></button></td>
                 </tr>
                 <tr>
                     <td><div id="day">19</div></td>
-                    <td><div id="month">Сентябрь</div></td>
+                    <td style="border-right: 1px solid #999;"><div id="month">Сентябрь</div></td>
                     <td><div id="hours">18</div></td>
                     <td><div id="minutes">30</div></td>
                 </tr>
                 <tr>
                     <td><button onclick="app.datePicker.minusDay();"class="date-btn-control"><i class="fa fa-arrow-down"></i></button></td>
-                    <td><button onclick="app.datePicker.minusMonth();"class="date-btn-control"><i class="fa fa-arrow-down"></i></button></td>
+                    <td style="border-right: 1px solid #999;"><button onclick="app.datePicker.minusMonth();"class="date-btn-control"><i class="fa fa-arrow-down"></i></button></td>
                     <td><button onclick="app.datePicker.minusHour();"class="date-btn-control"><i class="fa fa-arrow-down"></i></button></td>
                     <td><button onclick="app.datePicker.minusMinutes();"class="date-btn-control"><i class="fa fa-arrow-down"></i></button></td>
                 </tr>

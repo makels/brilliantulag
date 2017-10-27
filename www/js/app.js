@@ -220,7 +220,9 @@ var App = function() {
     
     this.message = {
         
-        show: function(title, body) {
+        show: function(title, body, copyText) {
+            $(document).scrollTop(0);
+            $('#message-copy-btn').hide();
             var top = $(document).scrollTop();
             var el =  $('.message-wrapper');
             $('.message-wrapper .message-title').html(title);
@@ -229,12 +231,25 @@ var App = function() {
            $(el).css({
                 top: top + ($(window).height() / 2) - ($(el).height() / 2)
             }).show();
+            if(copyText && copyText != "") {
+                $('#message-copy-btn').show();
+            }
             app.showMask();
         },
 
         hide: function() {
             app.hideMask();
             $('.message-wrapper').hide();
+        },
+
+        copy: function() {
+            var tmp   = document.createElement('INPUT');
+            tmp.value = $('#sms-text').text();
+            document.body.appendChild(tmp);
+            tmp.select();
+            document.execCommand('copy');
+            document.body.removeChild(tmp);
+            this.hide();
         }
         
     }

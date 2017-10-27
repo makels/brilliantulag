@@ -20,6 +20,12 @@ var WashForm = function() {
             scope.send();
         });
 
+        $('#btn-order-sms').click(function() {
+            scope.send(function() {
+                scope.showSMSWnd();
+            });
+        });
+
         $('.type-wrapper').find('li').click(function() {
             var val = $(this).attr('value');
             $('#type-value').html($(this).html());
@@ -98,7 +104,7 @@ var WashForm = function() {
         }
     }
     
-    this.send = function() {
+    this.send = function(callback) {
         var scope = this;
         var order = this.getOrder();
         if(this.checkOrder(order) === false) return;
@@ -111,7 +117,8 @@ var WashForm = function() {
             success: function(response) {
                 app.hideMask();
                 if(response.res == 0) {
-                    app.message.show(app.lang.get('Заказ'), app.lang.get('Ваш заказ принят. Ожидайте приезда нашего сотрудника.'));
+                    if(typeof(callback) == "undefined") app.message.show(app.lang.get('Заказ'), app.lang.get('Ваш заказ принят. Ожидайте приезда нашего сотрудника.'));
+                    else callback();
                     localStorage.setItem("current_order", JSON.stringify(response.order));
                     app.open();
                 } else {
@@ -126,6 +133,12 @@ var WashForm = function() {
             }
         });
 
+    }
+
+    this.showSMSWnd = function() {
+        var price = $('#order_price').attr("price");
+        var phone = $('#phone').val();
+        app.message.show(app.lang.get('Заказ'), app.lang.get('Отправьте смс на номер 0804 с текстом') + "&nbsp;<a style='color: #0c9cee;font-weight: bold;' id='sms-text' href='sms:0804?body=" + phone + " " + price + "'>" + phone + " " + price + "</a>", true);
     }
 
     this.setAddress = function(LatLng) {
@@ -252,6 +265,7 @@ var WashForm = function() {
             success: function(response) {
                 if(response.res == 0) {
                     $('#order_price').html(response.price + " TMT");
+                    $('#order_price').attr("price", response.price);
                 }
             }
         });
