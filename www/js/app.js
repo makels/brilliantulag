@@ -103,7 +103,7 @@ var App = function() {
             }
 
             if(user != null && user.type == 1) {
-                $('.menu-wrapper ul').html($('#menu-wrapper-washer ul').html());
+                $('.menu-wrapper ul').html($('#menu-wrapper-washer').html());
                 window.setTimeout(function() { $('.menu-wrapper .menu-item-logout').show(); },500);
             }
 

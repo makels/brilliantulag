@@ -81,5 +81,6 @@ var TU = [
     ['Завершен', 'Completed'],
     ['Не назначен', 'Not assigned'],
     ['Мойщик:', 'Washer:'],
-    ['Мойщик', 'Washer']
+    ['Мойщик', 'Washer'],
+    ['Вы зашли как мойщик', 'Siz ýuwujy ýaly girdi']
 ]

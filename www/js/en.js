@@ -82,7 +82,8 @@ var EN = [
     ['Завершен', 'Completed'],
     ['Не назначен', 'Not assigned'],
     ['Мойщик:', 'Washer:'],
-    ['Мойщик', 'Washer']
+    ['Мойщик', 'Washer'],
+    ['Вы зашли как мойщик', 'You login as washer']
 
 
 ]

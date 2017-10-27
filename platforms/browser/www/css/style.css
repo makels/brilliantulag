@@ -222,6 +222,11 @@ input[type=checkbox] {
     z-index: 9999;
 }
 
+.washer-user-type {
+    color: #999;
+    margin-left: -30px;
+}
+
 .type-wrapper, .services-wrapper, .address-wrapper, .addresses-wrapper {
     display: none;
     position: absolute;
