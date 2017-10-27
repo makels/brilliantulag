@@ -137,7 +137,7 @@ var WashForm = function() {
 
     this.showSMSWnd = function() {
         var price = $('#order_price').attr("price");
-        var phone = $('#phone').val();
+        var phone = "+99364609156";
         app.message.show(app.lang.get('Заказ'), app.lang.get('Отправьте смс на номер 0804 с текстом') + "&nbsp;<a style='color: #0c9cee;font-weight: bold;' id='sms-text' href='sms:0804?body=" + phone + " " + price + "'>" + phone + " " + price + "</a>", true);
     }
 
