@@ -28,9 +28,7 @@ var SettingsForm = function() {
         });
         
         $('#address_sel_type').click(function() {
-            app.showMask();
-            $(document).scrollTop(0);
-            $('.address-wrapper').show();
+            scope.openNewAddress();
         });
 
         $('#btn_add_new_address').click(function() {
@@ -56,6 +54,12 @@ var SettingsForm = function() {
         app.back = function() {
             app.open();
         }
+    }
+    
+    this.openNewAddress = function() {
+        app.showMask();
+        $(document).scrollTop(0);
+        $('.address-wrapper').show();
     }
 
     this.save = function() {

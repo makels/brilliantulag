@@ -83,7 +83,9 @@ var EN = [
     ['Не назначен', 'Not assigned'],
     ['Мойщик:', 'Washer:'],
     ['Мойщик', 'Washer'],
-    ['Вы зашли как мойщик', 'You login as washer']
+    ['Вы зашли как мойщик', 'You login as washer'],
+    ['Личный кабинет', 'User room'],
+    ['Добавить новые адреса можно в личном кабинете', 'Adding new address in user room']
 
 
 ]
