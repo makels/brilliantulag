@@ -85,6 +85,8 @@ var TU = [
     ['Вы зашли как мойщик', 'Siz ýuwujy ýaly girdi'],
     ['Личный кабинет', 'Şahsy iş otagy'],
     ['Добавить новые адреса можно в личном кабинете', ''],
-    ['Оплатить СМС', 'Pay with SMS'],
-    ['Отправьте смс на номер 0804 с текстом', 'Send SMS on number 0804 with text']
+    ['Копировать текст', 'Tekstyn öýkünmak'],
+    ['Оплатить СМС', 'Tölemek SMS bilen'],
+    ['Отправьте смс на номер 0804 с текстом', 'Iberiň SMS üstünde nomer 0804 bilen metin']
+    
 ]
