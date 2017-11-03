@@ -88,7 +88,8 @@ var EN = [
     ['Добавить новые адреса можно в личном кабинете', 'Adding new address in user room'],
     ['Копировать текст', 'Text copy'],
     ['Оплатить СМС', 'Pay with SMS'],
-    ['Отправьте смс на номер 0804 с текстом', 'Send SMS on number 0804 with text']
+    ['Отправьте смс на номер 0804 с текстом', 'Send SMS on number 0804 with text'],
+    ['Номер флаера:', 'Flyer number:']
     
     
 

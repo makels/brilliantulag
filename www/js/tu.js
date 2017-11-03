@@ -87,6 +87,7 @@ var TU = [
     ['Добавить новые адреса можно в личном кабинете', ''],
     ['Копировать текст', 'Tekstyn öýkünmak'],
     ['Оплатить СМС', 'Tölemek SMS bilen'],
-    ['Отправьте смс на номер 0804 с текстом', 'Iberiň SMS üstünde nomer 0804 bilen metin']
+    ['Отправьте смс на номер 0804 с текстом', 'Iberiň SMS üstünde nomer 0804 bilen metin'],
+    ['Номер флаера:', 'Flayer nomeri:']
     
 ]

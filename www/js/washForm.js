@@ -222,6 +222,7 @@ var WashForm = function() {
             phone: $('#phone').val(),
             model: $('#model').val(),
             number: $('#number').val(),
+            flyer_number: $('#flyer-number').val(),
             place: scope.latlng,
             address: $('#map-autocomplete').val(),
             service: Number($('.services-wrapper .selected').parent().attr("value")),
