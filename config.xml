@@ -26,6 +26,11 @@
     <feature name="Camera">
         <param name="android-package" value="org.apache.cordova.CameraLauncher" />
     </feature>
+
+    <config-file platform="ios" parent="NSPhotoLibraryUsageDescription" mode="replace">
+        <string>We added new photos from camera for attached to orders.</string>
+    </config-file>
+
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
