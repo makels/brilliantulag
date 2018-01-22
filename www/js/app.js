@@ -55,6 +55,8 @@ var App = function() {
 
             scope.clientRateForm = new ClientRateForm();
 
+            scope.termUse = new TermUse();
+
             $('.checkbox').click(function() {
                 $(this).toggleClass('checked');
             });
@@ -170,15 +172,15 @@ var App = function() {
     }
 
     this.openMenu = function() {
-        var height = 290;
+        var height = 330;
         var user = this.getUser();
         if(user != null && user.type == 1) {
-            height = 200;
+            height = 240;
             $('#menu-item-register-washer').hide();
         }
 
         if(user != null && user.type == 0) {
-            height = 230;
+            height = 270;
             $('#menu-item-register-client').hide();
         }
 
@@ -189,9 +191,9 @@ var App = function() {
     }
 
     this.closeMenu = function() {
-        var height = 290;
+        var height = 330;
         var user = this.getUser();
-        if(user != null && user.type == 1) height = 230;
+        if(user != null && user.type == 1) height = 270;
         $( ".menu-wrapper" ).animate({ height: "-=" + height + "px" }, 200, function() {
             $(this).hide();
         });

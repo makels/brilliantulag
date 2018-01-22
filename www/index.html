@@ -31,6 +31,7 @@
         <script type="text/javascript" src="js/clientOrderDetailForm.js"></script>
         <script type="text/javascript" src="js/clientOrders.js"></script>
         <script type="text/javascript" src="js/clientRateForm.js"></script>
+        <script type="text/javascript" src="js/termUse.js"></script>
         <script type="text/javascript" src="js/datetimepicker.js"></script>
         <script type="text/javascript" src="js/moment.min.js"></script>
         <script type="text/javascript" src="js/app.js"></script>
@@ -386,6 +387,56 @@
             <div class="order-detail-wrapper"></div>
         </div>
 
+        <!-- Term of Use -->
+        <div class="client-term-use-form form">
+            <div class="title-form">
+                <button onclick="if(app.menu_opening) app.closeMenu(); else app.openMenu();"><i class="fa fa-bars" aria-hidden="true"></i></button>
+                <button onclick="app.open();"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+            </div>
+            <div class="client-term-use-wrapper tu-ru">
+                <p><b>Бриллиантовая машина – BULAG</b> - приложение для заказа автомойки с выездом в любое место в Туркменистане.</p>
+                <p>Наше приложение позволяет заказать мойку автотранспорта с выездом в любое место, заказ моментально поступает мойщику на мобильный телефон и он отправляется на заказ через несколько минут.</p>
+                <p>В приложение используется функции:</p>
+                <ul>
+                    <li>- отправки письма заказчику, администратору и мойщику на электронную почту и на мобильное приложение,</li>
+                    <li>- определение координат заказчика и мойщика для подборки наиболее близкого мойщика к заказчику,</li>
+                    <li>- автоматический расчет стоимости услуг в зависимости от вида мойки,</li>
+                    <li>- выбор времени и местоположения автомобиля если телефон заказчика не оборудован средствами  определения местоположения.</li>
+                </ul>
+
+                <p>Все вопросы Вы можете задать по телефону (+99360)13-73-32 или отправив письмо на почту <a href="mailto:support@dulag.tk" target="_blank">support@dulag.tk</a></p>
+                <p>Более подробная информация указанна на сайте <a href="bulag.tk" target="_blank">http://bulag.tk</a></p>
+            </div>
+
+            <div class="client-term-use-wrapper tu-en">
+                <p><b>Diamond car - BULAG</b> - application for car wash order with departure to any place in Turkmenistan.</p>
+                <p>Our application allows you to order a car wash with an exit to any place, the order instantly goes to the washer on a mobile phone and hi go to order in a few minutes.</p>
+                <p>The application uses the following functions:</p>
+                <ul>
+                    <li>- sending letters to the customer, the administrator and the washer on e-mail and to the mobile application,</li>
+                    <li>- determination of the coordinates of the customer and the washer for the selection of the closest washer from the customer,</li>
+                    <li>- automatic calculation of the cost of services, depending on the type of washing,</li>
+                    <li>- choosing the time and location of the car if the customer's phone is not equipped with location-finding tools.</li>
+                </ul>
+                <p>All questions you can ask by phone (+99360) 13-73-32 or by sending an email to <a href="mailto:support@dulag.tk" target="_blank">support@dulag.tk</a></p>
+                <p>For more information, see <a href="bulag.tk" target="_blank">http://bulag.tk</a></p>
+            </div>
+
+            <div class="client-term-use-wrapper tu-tu">
+                <p><b>Brilliant maşyn – BULAG</b> – goşundy üçin sargyt maşyn ýuwalga bilen atly araba içinde hezil orun Türkmenistanda.</p>
+                <p>Biziň goşundy rugsat berýär buýurmak maşyn ýuwulýan ýer awtomobil transport bilen atly araba içinde hezil orun, sargyt çalt özüni alyp barýar ýuwujy  işçi üstünde çakgan telefon we ol iberilýär üstünde sargyt soň telim minut.</p>
+                <p>Içinde goşundy borç:</p>
+                <ul>
+                    <li>- Ugradyş hat buýrujy, administrator we ýuwujy işçi üstünde electron poçta we üstünde çakgan goşundy,</li>
+                    <li>- Aýyklaýjy buýrujy we ýuwujy işçi üçin laýygyny saýlama beter degşik ýuwujy işçi üçin buýrujy,</li>
+                    <li>- Awtomatik hasaplama nyrh hyzmat içinde baknalykdan görnüş maşyn ýuwulýan ýer,</li>
+                    <li>- Saýlaw wagt we meýdança awtomobileger telefon buýrujy däl abzallaşdyr aýyklaýjy meýdança.</li>
+                </ul>
+                <p>Hemme meseleleri Siz atmak telefonda (+99360) 13-73-32 ýa-da iberip haty üstünde poçta <a href="mailto:support@dulag.tk" target="_blank">support@dulag.tk</a></p>
+                <p>Has jikme-jik maglumat üstünde saýt <a href="http://bulag.tk/" target="_blank">http://bulag.tk/</a></p>
+            </div>
+        </div>
+
         <!-- Map Form -->
         <div class="map-form form">
             <div class="title-form">
@@ -498,6 +549,7 @@
                 <li onclick="app.settingsForm.open();"><i class="fa fa-cog"></i>&nbsp;@@Личный кабинет</li>
                 <li onclick="app.washForm.open();"><i class="fa fa-automobile"></i>&nbsp;@@Заказать мойку</li>
                 <li onclick="app.clientOrders.open();"><i class="fa fa-th-list"></i>&nbsp;@@Мои заказы</li>
+                <li onclick="app.termUse.open();"><i class="fa fa-info"></i>&nbsp;@@Условия использования</li>
             </ul>
         </div>
 
@@ -509,6 +561,7 @@
                 <li onclick="app.registerWasherForm.open();" id="menu-item-register-washer"><i class="fa fa-user-plus"></i>&nbsp;@@Регистрация</li>
                 <li onclick="app.settingsForm.open();"><i class="fa fa-cog"></i>&nbsp;@@Личный кабинет</li>
                 <li onclick="app.orderForm.open();"><i class="fa fa-automobile"></i>&nbsp;@@Текущий заказ</li>
+                <li onclick="app.termUse.open();"><i class="fa fa-info"></i>&nbsp;@@Условия использования</li>
             </ul>
         </div>
 

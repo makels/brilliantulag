@@ -89,7 +89,8 @@ var EN = [
     ['Копировать текст', 'Text copy'],
     ['Оплатить СМС', 'Pay with SMS'],
     ['Отправьте смс на номер 0804 с текстом', 'Send SMS on number 0804 with text'],
-    ['Номер флаера:', 'Flyer number:']
+    ['Номер флаера:', 'Flyer number:'],
+    ['Условия использования', 'Terms of Use']
     
     
 
